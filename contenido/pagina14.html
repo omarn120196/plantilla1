@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 04 | I4L</title>
+</head>
+<body>
+    <img class="elementos" id="titulo14" src="./img/pagina14/titulo.png" data-posX="0" data-posY="0" alt="">
+    
+    <img class="elementos" id="fondo14" src="./img/pagina14/fondo.png" data-posX="0" data-posY="107" alt="">
+    <img class="elementos" id="texto14" src="./img/pagina14/texto.png" data-posX="520" data-posY="163" alt="">
+    <img class="elementos" id="btnEvaluacion" src="./img/pagina14/comenzar.png" data-posX="671" data-posY="419" alt="">
+
+
+    <!-- Script de la página -->
+    <script type="module">
+        import {aplicacion} from './js/app.js';
+        import {animacionEntrada, animacionSalida, parpadea} from './js/animaciones.js';
+        import {cargando} from './js/funciones.js';
+
+        jQuery(function($){
+            
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const titulo = $('#titulo14');
+            const fondo = $('#fondo14');
+            const texto = $('#texto14');
+            const btnEvaluacion = $('#btnEvaluacion');
+
+            //Iniciar contenido de la página--------------------------------------
+            
+            cargando(iniciarPagina);
+
+            function iniciarPagina(){
+
+                animacionEntrada(titulo, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+                animacionEntrada(texto, 'default', 1, 2);
+                
+                parpadea(btnEvaluacion, .8 , 3);
+
+                btnEvaluacion.click(function(){
+                    aplicacion.nextPag();
+                });
+            }
+
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+</html>
