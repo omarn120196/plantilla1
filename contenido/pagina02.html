@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 02 | I4L</title>
+</head>
+<body>
+    <img class="elementos" id="titulo02" src="./img/pagina02/titulo.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos" id="menu" src="./img/pagina02/menu.png" data-posX="65" data-posY="202" alt="">
+    <img class="elementos" id="recargar" src="./img/pagina02/recargar.png" data-posX="242" data-posY="202" alt="">
+    <img class="elementos" id="bocina" src="./img/pagina02/bocina.png" data-posX="448" data-posY="202" alt="">
+    <img class="elementos" id="navegacion" src="./img/pagina02/navegacion.png" data-posX="641" data-posY="202" alt="">
+    <img class="elementos" id="glosario" src="./img/pagina02/glosario.png" data-posX="858" data-posY="202" alt="">
+
+    <img class="elementos" id="info_menu" src="./img/pagina02/info_menu.png" data-posX="70" data-posY="363" alt="">
+    <img class="elementos" id="info_recargar" src="./img/pagina02/info_recargar.png" data-posX="249" data-posY="363" alt="">
+    <img class="elementos" id="info_bocina" src="./img/pagina02/info_bocina.png" data-posX="455" data-posY="363" alt="">
+    <img class="elementos" id="info_navegacion" src="./img/pagina02/info_navegacion.png" data-posX="624" data-posY="363" alt="">
+    <img class="elementos" id="info_glosario" src="./img/pagina02/info_glosario.png" data-posX="848" data-posY="363" alt="">
+
+
+    <!-- Script de la página -->
+    <script type="module">
+        import {aplicacion} from './js/app.js';
+        import {animacionEntrada, parpadea} from './js/animaciones.js';
+        import {cargando} from './js/funciones.js';
+
+        jQuery(function($){
+            
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_02_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_02_02.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_02_03.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_02_04.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_02_05.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_02_06.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const titulo = $('#titulo02');
+
+            const menu = $('#menu');
+            const recargar = $('#recargar');
+            const bocina = $('#bocina');
+            const navegacion = $('#navegacion');
+            const glosario = $('#glosario');
+            
+            const info_menu = $('#info_menu');
+            const info_recargar = $('#info_recargar');
+            const info_bocina = $('#info_bocina');
+            const info_navegacion = $('#info_navegacion');
+            const info_glosario = $('#info_glosario');
+
+            //Iniciar contenido de la página--------------------------------------
+            
+            cargando(iniciarPagina);
+
+            function iniciarPagina(){
+                aplicacion.activarNavegacion();
+
+                aplicacion.reproducirAudio(audio[0], clickMenu, 1000);
+                animacionEntrada(titulo, 'izquierda-derecha', 1);
+                animacionEntrada(menu, 'arriba-abajo', 1, .5);
+                animacionEntrada(recargar, 'arriba-abajo', 1, 1);
+                animacionEntrada(bocina, 'arriba-abajo', 1, 1.5);
+                animacionEntrada(navegacion, 'arriba-abajo', 1, 2);
+                animacionEntrada(glosario, 'arriba-abajo', 1, 2.5);
+            }
+
+            function clickMenu(){
+                parpadea(menu);
+                menu.click(function(){
+                    if(menu.css('cursor') == 'pointer'){
+                        TweenMax.killTweensOf(menu);
+                        menu.css({
+                            'opacity': '1',
+                            'cursor': 'default'
+                        });
+                        aplicacion.reproducirAudio(audio[1], clickRecargar, 1000);
+                        animacionEntrada(info_menu, 'default', 1, 1);
+                    }
+                });
+            }
+
+            function clickRecargar(){
+                parpadea(recargar);
+                recargar.click(function(){
+                    if(recargar.css('cursor') == 'pointer'){
+                        TweenMax.killTweensOf(recargar);
+                        recargar.css({
+                            'opacity': '1',
+                            'cursor': 'default'
+                        });
+                        aplicacion.reproducirAudio(audio[2], clickBocina, 1000);
+                        animacionEntrada(info_recargar, 'default', 1, 1);
+                    }
+                });
+            }
+
+            function clickBocina(){
+                parpadea(bocina);
+                bocina.click(function(){
+                    if(bocina.css('cursor') == 'pointer'){
+                        TweenMax.killTweensOf(bocina);
+                        bocina.css({
+                            'opacity': '1',
+                            'cursor': 'default'
+                        });
+                        aplicacion.reproducirAudio(audio[3], clickNavegacion, 1000);
+                        animacionEntrada(info_bocina, 'default', 1, 1);
+                    }
+                });
+            }
+
+            function clickNavegacion(){
+                parpadea(navegacion);
+                navegacion.click(function(){
+                    if(navegacion.css('cursor') == 'pointer'){
+                        TweenMax.killTweensOf(navegacion);
+                        navegacion.css({
+                            'opacity': '1',
+                            'cursor': 'default'
+                        })
+                        aplicacion.reproducirAudio(audio[4], clickGlorsario, 1000);
+                        animacionEntrada(info_navegacion, 'default', 1, 1);
+                    }
+                });
+            }
+
+            function clickGlorsario(){
+                parpadea(glosario);
+                glosario.click(function(){
+                    if(glosario.css('cursor') == 'pointer'){
+                        TweenMax.killTweensOf(glosario);
+                        glosario.css({
+                            'opacity': '1',
+                            'cursor': 'default'
+                        })
+                        aplicacion.reproducirAudio(audio[5], terminaPagina, 1000);
+                        animacionEntrada(info_glosario, 'default', 1, 1);
+                    }
+                });
+            }
+
+            function terminaPagina(){
+                aplicacion.terminaPantalla()
+            }
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+</html>

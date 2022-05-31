@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 03 | I4L</title>
+</head>
+<body>
+    <img class="elementos" id="titulo10" src="./img/pagina10/titulo.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos" id="fondo10" src="./img/pagina10/fondo10.png" data-posX="0" data-posY="76" alt="">
+    <img class="elementos" id="texto10" src="./img/pagina10/texto10.png" data-posX="424" data-posY="136" alt="">
+    <img class="elementos" id="glosarioAG" src="./img/pagina10/glosarioAG.png" data-posX="750" data-posY="301" alt="">
+    <img class="elementos" id="popAG" src="./img/pagina10/popAG.png" data-posX="759" data-posY="195" alt="">
+
+
+    <!-- Script de la página -->
+    <script type="module">
+        import {aplicacion} from './js/app.js';
+        import {animacionEntrada, animacionSalida, parpadea} from './js/animaciones.js';
+        import {cargando} from './js/funciones.js';
+
+        jQuery(function($){
+            
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_02_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_02_02.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const titulo = $('#titulo10');
+            const fondo = $('#fondo10');
+            const texto = $('#texto10');
+            const glosarioAG = $('#glosarioAG');
+            const popAG = $('#popAG');
+
+            //Iniciar contenido de la página--------------------------------------
+            
+            cargando(iniciarPagina);
+
+            function iniciarPagina(){
+
+                aplicacion.reproducirAudio(audio[0], leerTexto, 1000);
+                animacionEntrada(titulo, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+            }
+
+            function leerTexto(){
+                aplicacion.reproducirAudio(audio[1], terminaPagina, 1000);
+                animacionEntrada(texto, 'default', 1, 1);
+                animacionEntrada(glosarioAG, 'default', 1, 1);
+
+                glosarioAG.css('cursor', 'pointer');
+                glosarioAG.click(function(){
+                    animacionEntrada(popAG, 'default', .5, .5);
+
+                    popAG.css('cursor', 'pointer');
+                    
+                });
+
+                popAG.click(function(){
+                    TweenMax.killTweensOf(popAG);
+                    animacionSalida(popAG, 'default', .5, .5);
+                });
+            }
+            
+
+            function terminaPagina(){
+                aplicacion.terminaPantalla()
+            }
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+</html>

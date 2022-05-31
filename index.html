@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla | Optimizada</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/interfaz/favicon-32x32.png">
+
+    <!-- Iconos -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/generales.css">
+
+    <!-- Importar APIS y librerias -->
+    <script src="js/librerias/SCORM_API_wrapper.js"></script>
+    <script src="js/librerias/gsap.min.js"></script>
+    <script src="js/librerias/jquery.min.js"></script>
+
+</head>
+<body id="contenedorPrincipal">
+
+    <div id="cont-interfaz">
+
+        <div id="spinner">
+            
+        </div>
+
+        <div id="cont-paginas">
+
+        </div>
+
+        <div id="cont-botones">
+            <button class="btnNav btnNavActivo" id="menu" data-posX="27" data-posY="553">
+                <img src="img/interfaz/menu.png" alt="">
+            </button>
+            <button class="btnNav btnNavActivo" id="recargar" data-posX="111" data-posY="553">
+                <img src="img/interfaz/recargar.png" alt="">
+            </button>
+            <button class="btnNav btnNavActivo" id="audio" data-posX="194" data-posY="553">
+                <img src="img/interfaz/audio.png" alt="">
+            </button>
+            <button class="btnNav btnNavActivo" id="atras" data-posX="814" data-posY="553">
+                <img src="img/interfaz/atras.png" alt="">
+            </button>
+            <button class="btnNav btnNavActivo" id="adelante" data-posX="880" data-posY="553">
+                <img src="img/interfaz/delante.png" alt="">
+            </button>
+        </div>
+
+        <div class="cont-progreso">
+            <p class="relacion">
+                
+            </p>
+            <div class="barra">
+                <div class="porcentaje">
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-lateral">
+            <div class="contenedor-temas">
+                <div class="cerrar" title="Cerrar">
+                    <i class='bx bxs-arrow-to-left' ></i>
+                </div>
+                <div class="titulo">
+                    <h1>Temario</h1>
+                </div>
+                <div class="temas">
+                    <ul>
+                        <li class="tema" data-pagina="0">
+                            <i class='bx bx-square-rounded' ></i> 
+                            <p>Objetivo</p>
+                        </li>
+                        <li class="tema" data-pagina="1">
+                            <i class='bx bx-square-rounded' ></i> 
+                            <p>Contrato Colectivo</p>
+                        </li>
+                        <li class="tema" data-pagina="2">
+                            <i class='bx bx-square-rounded' ></i> 
+                            <p>Prestaciones para sindicalizados</p>
+                        </li>
+                        <li class="tema" data-pagina="3">
+                            <i class='bx bx-square-rounded' ></i>
+                            <p>Tabulador de vacaciones</p>
+                        </li>
+                        <li class="tema" data-pagina="4">
+                            <i class='bx bx-square-rounded' ></i> 
+                            <p>Categorías de personal sindicalizado</p>
+                        </li>
+                        <li class="tema" data-pagina="5">
+                            <i class='bx bx-square-rounded' ></i> 
+                            <p>Evaluación final</p>
+                        </li>   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bienvenida">
+        <h1>¡Bienvenido!</h1>
+        <h3>¿Estas listo para tu aprendizaje?</h3>
+        <h3 id="legend">Presiona el botón</h3>
+        <button id="comenzar">Comenzar</button>
+    </div>
+</body>
+
+
+<script src="js/app.js" type="module"></script>
+
+</html>
