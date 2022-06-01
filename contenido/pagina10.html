@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 10 | I4L</title>
+</head>
+<body>
+    <img class="elementos" id="pleca" src="./img/pagina10/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo" src="./img/pagina10/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="texto" src="./img/pagina10/texto10.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="btnAG" src="./img/pagina10/glosarioAG.png" data-posX="750" data-posY="295" alt="">
+    <img class="elementos" id="infoAG" src="./img/pagina10/popAG.png" data-posX="750" data-posY="200" alt="">
+   
+    <!-- Script de la página -->
+    <script type="module">
+        import {aplicacion} from './js/app.js';
+        import {animacionEntrada, animacionSalida} from './js/animaciones.js';
+        import {cargando} from './js/funciones.js';
+
+        jQuery(function($){
+            
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_10_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_10_02.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_10_03.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const pleca = $('#pleca');
+            const fondo = $('#fondo');
+            const texto = $('#texto');
+            const btnAG = $('#btnAG');
+            const infoAG = $('#infoAG');
+
+            //Iniciar contenido de la página--------------------------------------
+            
+            cargando(iniciarPagina);
+
+            function iniciarPagina(){
+
+                aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
+                animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+                animacionEntrada(btnAG, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(texto, 'derecha-izquierda', 1, 1.5);
+            }  
+            
+            function terminaAudio(){
+                aplicacion.reproducirAudio(audio[1], terminaAudio1, 1000);
+            }
+            function terminaAudio1(){
+                aplicacion.reproducirAudio(audio[2], terminaPagina, 1000);
+            }
+            function terminaPagina(){
+                aplicacion.terminaPantalla()
+            }
+
+            btnAG.css('cursor', 'pointer');
+            btnAG.click(function () {
+                animacionEntrada(infoAG, 'default', .5, .5);
+                infoAG.css('cursor', 'pointer');
+            });
+
+            infoAG.click(function () {
+                TweenMax.killTweensOf(infoAG);
+                animacionSalida(infoAG, 'default', .5, .5);
+            });
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+</html>

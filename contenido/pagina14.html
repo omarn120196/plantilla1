@@ -24,7 +24,7 @@
             
             // Cargar Audios------------------------------------------------------
             const audio = [
-                
+                new Audio('./audios/Sanofi_Reforzamiento_14_01.mp3'),
             ]
 
             //Crear Variables-----------------------------------------------------
@@ -38,7 +38,7 @@
             cargando(iniciarPagina);
 
             function iniciarPagina(){
-
+                aplicacion.reproducirAudio(audio[0], 1000);
                 animacionEntrada(titulo, 'izquierda-derecha', 1, 1);
                 animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
                 animacionEntrada(texto, 'default', 1, 2);

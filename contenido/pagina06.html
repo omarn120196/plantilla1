@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 06 | I4L</title>
+</head>
+
+<body>
+    <img class="elementos" id="pleca" src="./img/pagina06/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo" src="./img/pagina06/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="btnNota" src="./img/pagina06/btnNota.png" data-posX="850" data-posY="230" alt="">
+    <img class="elementos" id="nota1" src="./img/pagina06/nota1.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="nota2" src="./img/pagina06/nota2.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="btnSig" src="./img/pagina06/btnSig.png" data-posX="740" data-posY="370" alt="">
+    <img class="elementos" id="btnReg" src="./img/pagina06/btnReg.png" data-posX="740" data-posY="370" alt="">
+    <img class="elementos" id="btnCerrar" src="./img/pagina06/btnCerrar.png" data-posX="700" data-posY="170" alt="">
+
+    <!-- Script de la página -->
+    <script type="module">
+        import { aplicacion } from './js/app.js';
+        import { animacionEntrada, animacionSalida, parpadea } from './js/animaciones.js';
+        import { cargando } from './js/funciones.js';
+
+        jQuery(function ($) {
+
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_06_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_06_02.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_06_03.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_06_04.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_06_05.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_06_06.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const pleca = $('#pleca');
+            const fondo = $('#fondo');
+            const btnNota = $('#btnNota');
+            const nota1 = $('#nota1');
+            const nota2 = $('#nota2');
+            const btnSig = $('#btnSig');
+            const btnReg = $('#btnReg');
+            const btnCerrar = $('#btnCerrar');
+
+            //Iniciar contenido de la página--------------------------------------
+
+            cargando(iniciarPagina);
+
+            function iniciarPagina() {
+
+                aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
+                animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+                // animacionEntrada(btnNota, 'derecha-izquierda', 1, 1);
+            }
+
+            function terminaAudio() {
+                aplicacion.reproducirAudio(audio[1], terminaAudio2, 1000);
+            }
+
+            function terminaAudio2() {
+                aplicacion.reproducirAudio(audio[2], terminaAudio3, 1000);
+            }
+
+            function terminaAudio3() {
+                aplicacion.reproducirAudio(audio[3], parpadeaBtn, 1000);
+            }
+            function parpadeaBtn() {
+                parpadea(btnNota);
+            }
+
+            //Funcionalidad btnNota--------------------------------------------------------
+            btnNota.click(function () {
+                if (btnNota.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btnNota);
+                    btnNota.css({
+                        'opacity': '1'
+                    });
+                }
+                aplicacion.reproducirAudio(audio[4], terminaAudio, 1000);
+                animacionEntrada(nota1, "der_izq", .5, 0.3);
+
+                function terminaAudio() {
+                    parpadea(btnSig);
+                }
+            });
+
+            //Funcionalidad btnSiguiente--------------------------------------------------------
+            btnSig.click(function () {
+                if (btnSig.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btnSig);
+                    btnSig.css({
+                        'opacity': '1'
+                    });
+                }
+
+                aplicacion.reproducirAudio(audio[5], terminaAudio, 1000);
+                animacionSalida(nota1, "desaparece", .5, 0.3);
+                animacionSalida(btnSig, "desaparece", .5, 0.3);
+                animacionEntrada(nota2, "default", .5, 0.3);
+                animacionEntrada(btnReg, "default", .5, 0.3);
+
+                function terminaAudio() {
+                    parpadea(btnCerrar, .5);
+                }
+            });
+
+            //Funcionalidad btnCerrar--------------------------------------------------------
+            $(btnCerrar).click(function () {
+                if (btnCerrar.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btnCerrar);
+                    btnCerrar.css({
+                        'opacity': '1'
+                    });
+                }
+                animacionSalida(nota2, "desaparece", .5, 0.3);
+                animacionSalida(btnReg, "desaparece", .5, 0.3);
+                animacionSalida(btnSig, "desaparece", .5, 0.3);
+                animacionSalida(btnCerrar, "desaparece", .5, 0.3);
+
+                aplicacion.terminaPantalla()
+            });
+
+            //Funcionalidad btnRegresar--------------------------------------------------------
+            btnReg.click(function () {
+                if (btnReg.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btnReg);
+                    btnReg.css({
+                        'opacity': '1'
+                    });
+                }
+
+                aplicacion.reproducirAudio(audio[4], 1000);
+                animacionSalida(nota2, "desaparece", .5, 0.3);
+                animacionSalida(btnCerrar, "desaparece", .5, 0.3);
+                animacionSalida(btnReg, "desaparece", .5, 0.3);
+                animacionEntrada(nota1, "default", .5, 0.3);
+                animacionEntrada(btnSig, "default", .5, 0.3);
+            });
+
+
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+
+</html>

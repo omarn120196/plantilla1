@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 09 | I4L</title>
+</head>
+<body>
+    <img class="elementos" id="pleca" src="./img/pagina09/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo" src="./img/pagina09/fondo.png" data-posX="0" data-posY="0" alt="">
+   
+    <!-- Script de la página -->
+    <script type="module">
+        import {aplicacion} from './js/app.js';
+        import {animacionEntrada} from './js/animaciones.js';
+        import {cargando} from './js/funciones.js';
+
+        jQuery(function($){
+            
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_09_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_09_02.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const pleca = $('#pleca');
+            const fondo = $('#fondo');
+
+            //Iniciar contenido de la página--------------------------------------
+            
+            cargando(iniciarPagina);
+
+            function iniciarPagina(){
+
+                aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
+                animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+            }    
+            
+            function terminaAudio(){
+                aplicacion.reproducirAudio(audio[1], terminaPagina, 1000);
+            }
+
+            function terminaPagina(){
+                aplicacion.terminaPantalla()
+            }
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+</html>
