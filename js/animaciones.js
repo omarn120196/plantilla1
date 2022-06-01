@@ -94,6 +94,15 @@ export function animacionSalida(elemento, direccion, tiempo, delay = 0){
                 ease: "back.in(1.7)"
             });
             break;
+        case 'desaparece':
+            gsap.to(elemento, {
+                opacity: 0,
+                duration: tiempo,
+                delay: delay,
+                display: "none",
+                ease: "back.in(1.7)"
+            });
+            break;
         default : 
             gsap.to(elemento, {
                 opacity: 0,

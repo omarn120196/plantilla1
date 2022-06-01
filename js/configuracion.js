@@ -22,6 +22,50 @@ export const paginas = [
         noPagina: 5,
         ruta: 'pagina05.html'
     },
+    {
+        noPagina: 6,
+        ruta: 'pagina06.html'
+    },
+    {
+        noPagina: 7,
+        ruta: 'pagina07.html'
+    },
+    {
+        noPagina: 8,
+        ruta: 'pagina08.html'
+    },
+    {
+        noPagina: 9,
+        ruta: 'pagina09.html'
+    },
+    {
+        noPagina: 10,
+        ruta: 'pagina10.html'
+    },
+    {
+        noPagina: 11,
+        ruta: 'pagina11.html'
+    },
+    {
+        noPagina: 12,
+        ruta: 'pagina12.html'
+    },
+    {
+        noPagina: 13,
+        ruta: 'pagina13.html'
+    },
+    {
+        noPagina: 14,
+        ruta: 'pagina14.html'
+    },
+    {
+        noPagina: 15,
+        ruta: 'pagina15.html'
+    },
+    {
+        noPagina: 16,
+        ruta: 'pagina16.html'
+    },
 ]
 
 //Valores de elementos-----------------------------------------------------------

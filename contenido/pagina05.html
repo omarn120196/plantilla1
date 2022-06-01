@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 05 | I4L</title>
+</head>
+
+<body>
+    <img class="elementos" id="pleca" src="./img/pagina05/pleca.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos" id="img" src="./img/pagina05/img01.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="btnSindi" src="./img/pagina05/btnSindi.png" data-posX="347" data-posY="160" alt="">
+
+    <img class="elementos" id="btn01" src="./img/pagina05/btn01.png" data-posX="40" data-posY="310" alt="">
+    <img class="elementos" id="btn02" src="./img/pagina05/btn02.png" data-posX="210" data-posY="350" alt="">
+    <img class="elementos" id="btn03" src="./img/pagina05/btn03.png" data-posX="370" data-posY="310" alt="">
+    <img class="elementos" id="btn04" src="./img/pagina05/btn04.png" data-posX="530" data-posY="350" alt="">
+    <img class="elementos" id="btn05" src="./img/pagina05/btn05.png" data-posX="690" data-posY="310" alt="">
+    <img class="elementos" id="btn06" src="./img/pagina05/btn06.png" data-posX="850" data-posY="350" alt="">
+
+    <img class="elementos" id="infoSindi" src="./img/pagina05/infoSindi.png" data-posX="250" data-posY="180" alt="">
+    <img class="elementos" id="info01" src="./img/pagina05/info01.png" data-posX="0" data-posY="107" alt="">
+    <img class="elementos" id="info02" src="./img/pagina05/info02.png" data-posX="0" data-posY="107" alt="">
+    <img class="elementos" id="info03" src="./img/pagina05/info03.png" data-posX="0" data-posY="107" alt="">
+    <img class="elementos" id="info04" src="./img/pagina05/info04.png" data-posX="0" data-posY="107" alt="">
+    <img class="elementos" id="info05" src="./img/pagina05/info05.png" data-posX="0" data-posY="107" alt="">
+    <img class="elementos" id="info06" src="./img/pagina05/info06.png" data-posX="0" data-posY="107" alt="">
+
+    <img class="elementos" id="btnCerrar" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
+
+
+    <!-- Script de la página -->
+    <script type="module">
+        import { aplicacion } from './js/app.js';
+        import { animacionEntrada, animacionSalida, parpadea } from './js/animaciones.js';
+        import { cargando } from './js/funciones.js';
+
+        jQuery(function ($) {
+
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_05_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_05_02.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_05_03.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_05_04.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_05_05.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_05_06.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_05_07.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_05_08.mp3')
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const pleca = $('#pleca');
+            const img = $('#img');
+            const btnSindi = $('#btnSindi');
+
+            const btn01 = $('#btn01');
+            const btn02 = $('#btn02');
+            const btn03 = $('#btn03');
+            const btn04 = $('#btn04');
+            const btn05 = $('#btn05');
+            const btn06 = $('#btn06');
+            const btnCerrar = $('#btnCerrar');
+
+            const infoSindi = $('#infoSindi');
+            const info01 = $('#info01');
+            const info02 = $('#info02');
+            const info03 = $('#info03');
+            const info04 = $('#info04');
+            const info05 = $('#info05');
+            const info06 = $('#info06');
+
+            //Iniciar contenido de la página--------------------------------------
+
+            cargando(iniciarPagina);
+
+            function iniciarPagina() {
+
+                aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
+                animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
+                animacionEntrada(img, 'derecha-izquierda', 1, 1);
+                animacionEntrada(btnSindi, 'derecha-izquierda', 1, 1);
+
+            }
+
+            function terminaAudio() {
+                aplicacion.reproducirAudio(audio[1], btnAmarillo, 1000);
+                animacionEntrada(btn01, 'arriba-abajo', 1, .5);
+                animacionEntrada(btn02, 'arriba-abajo', 1, 1.5);
+                animacionEntrada(btn03, 'arriba-abajo', 1, 2.5);
+                animacionEntrada(btn04, 'arriba-abajo', 1, 3.5);
+                animacionEntrada(btn05, 'arriba-abajo', 1, 4.5);
+                animacionEntrada(btn06, 'arriba-abajo', 1, 5.5);
+
+                function btnAmarillo() {
+                    parpadea(btn01);
+                }
+            }
+
+            //Funcionalidad btnSindicalizado---------------------------------------------------
+            btnSindi.css('cursor', 'pointer');
+            btnSindi.click(function () {
+                animacionEntrada(infoSindi, 'default', .5, .5);
+                infoSindi.css('cursor', 'pointer');
+
+            });
+
+            infoSindi.click(function () {
+                TweenMax.killTweensOf(infoSindi);
+                animacionSalida(infoSindi, 'default', .5, .5);
+            });
+
+            //Funcionalidad btnAmarillo--------------------------------------------------------
+            btn01.click(function () {
+                if (btn01.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btn01);
+                    btn01.css({
+                        'opacity': '1',
+                        'cursor': 'default'
+                    });
+                }
+                aplicacion.reproducirAudio(audio[2], terminaAudio, 1000);
+                animacionEntrada(info01, 'default', 1, 1);
+
+                function terminaAudio() {
+                    parpadea(btnCerrar);
+                    btnCerrar.click(function () {
+                        if (btnCerrar.css('cursor') == 'pointer') {
+                            TweenMax.killTweensOf(btnCerrar);
+                            btnCerrar.css({
+                                'opacity': '1',
+                                'cursor': 'default'
+                            });
+                        }
+                        animacionSalida(info01, 'desaparece', .5, .5);
+                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
+                        parpadea(btn02);
+                    });
+                }
+            });
+
+
+            //Funcionalidad btnVerde--------------------------------------------------------
+            btn02.click(function () {
+                if (btn02.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btn02);
+                    btn02.css({
+                        'opacity': '1',
+                        'cursor': 'default'
+                    });
+                }
+                aplicacion.reproducirAudio(audio[3], terminaAudio, 1000);
+                animacionEntrada(info02, 'default', 1, 1);
+
+                function terminaAudio() {
+                    parpadea(btnCerrar);
+                    btnCerrar.click(function () {
+                        if (btnCerrar.css('cursor') == 'pointer') {
+                            TweenMax.killTweensOf(btnCerrar);
+                            btnCerrar.css({
+                                'opacity': '1',
+                                'cursor': 'default'
+                            });
+                        }
+                        animacionSalida(info02, 'desaparece', .5, .5);
+                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
+                        parpadea(btn03);
+                    });
+                }
+            });
+
+            //Funcionalidad btnRojo--------------------------------------------------------
+            btn03.click(function () {
+                if (btn03.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btn03);
+                    btn03.css({
+                        'opacity': '1',
+                        'cursor': 'default'
+                    });
+                }
+                aplicacion.reproducirAudio(audio[4], terminaAudio, 1000);
+                animacionEntrada(info03, 'default', 1, 1);
+
+                function terminaAudio() {
+                    parpadea(btnCerrar);
+                    btnCerrar.click(function () {
+                        if (btnCerrar.css('cursor') == 'pointer') {
+                            TweenMax.killTweensOf(btnCerrar);
+                            btnCerrar.css({
+                                'opacity': '1',
+                                'cursor': 'default'
+                            });
+                        }
+                        animacionSalida(info03, 'desaparece', .5, .5);
+                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
+                        parpadea(btn04);
+                    });
+                }
+            });
+
+            //Funcionalidad btnMorado--------------------------------------------------------
+            btn04.click(function () {
+                if (btn04.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btn04);
+                    btn04.css({
+                        'opacity': '1',
+                        'cursor': 'default'
+                    });
+                }
+                aplicacion.reproducirAudio(audio[5], terminaAudio, 1000);
+                animacionEntrada(info04, 'default', 1, 1);
+
+                function terminaAudio() {
+                    parpadea(btnCerrar);
+                    btnCerrar.click(function () {
+                        if (btnCerrar.css('cursor') == 'pointer') {
+                            TweenMax.killTweensOf(btnCerrar);
+                            btnCerrar.css({
+                                'opacity': '1',
+                                'cursor': 'default'
+                            });
+                        }
+                        animacionSalida(info04, 'desaparece', .5, .5);
+                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
+                        parpadea(btn05);
+                    });
+                }
+            });
+
+
+
+
+
+
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+
+</html>

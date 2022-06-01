@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 11 | I4L</title>
+</head>
+
+<body>
+    <img class="elementos" id="pleca" src="./img/pagina11/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo" src="./img/pagina11/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="carrusel" src="./img/pagina11/carrusel.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info1" src="./img/pagina11/info01.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info2" src="./img/pagina11/info02.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info3" src="./img/pagina11/info03.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info4" src="./img/pagina11/info04.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="btnSig" src="./img/pagina11/btn-sig.png" data-posX="943" data-posY="430" alt="">
+    <img class="elementos" id="btnReg" src="./img/pagina11/btn-atras.png" data-posX="943" data-posY="480" alt="">
+
+    <!-- Script de la página -->
+    <script type="module">
+        import { aplicacion } from './js/app.js';
+        import { animacionEntrada, animacionSalida, parpadea } from './js/animaciones.js';
+        import { cargando } from './js/funciones.js';
+
+        jQuery(function ($) {
+
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_11_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_11_02.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_11_03.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_11_04.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_11_05.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const pleca = $('#pleca');
+            const fondo = $('#fondo');
+            const carrusel = $('#carrusel');
+            const info01 = $('#info1');
+            const info02 = $('#info02');
+            const info03 = $('#info03');
+            const info04 = $('#info04');
+            const btnSig = $('#btnSig');
+            const btnReg = $('#btnReg');
+
+            var i = 1;
+
+            //Iniciar contenido de la página--------------------------------------
+
+            cargando(iniciarPagina);
+
+            function iniciarPagina() {
+
+                aplicacion.reproducirAudio(audio[0], terminaAudio1, 1000);
+                animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+                animacionEntrada(carrusel, 'derecha-izquierda', 1, 1);
+            }
+
+            function terminaAudio1() {
+                aplicacion.reproducirAudio(audio[1], btnSiguiente, 1000);
+                animacionEntrada(info01, 'izquierda-derecha', 1, 1);
+            }
+
+            function btnSiguiente() {
+                parpadea(btnSig);
+            }
+
+            function salen() {
+                animacionSalida("#info1", "desaparece", 0);
+                animacionSalida("#info2", "desaparece", 0);
+                animacionSalida("#info3", "desaparece", 0);
+                animacionSalida("#info4", "desaparece", 0);
+                // animacionSalida(btn-sp, "desaparece", 0);
+            }
+
+            function checa() {
+                if (i == 4) {
+                    console.log("terminopagina" + i);
+                    btnSig.hide();
+
+                }
+                if (i == 1) {
+                    console.log("terminopaginainicial" + i);
+                    btnReg.hide();
+                    aplicacion.reproducirAudio(audio[1], 1000);
+
+                }
+            }
+
+            btnSig.click(function () {
+                if (btnSig.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btnSig);
+                    btnSig.css({
+                        'opacity': '1'
+                    });
+                }
+                salen();
+                i += 1;
+                console.log(i)
+                animacionEntrada($("#info" + i), 'derecha-izquierda', .5, 0.3);
+
+                if (i == 2) {
+                    aplicacion.reproducirAudio(audio[2], 1000, siguiente);
+                    animacionEntrada($("#info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
+
+                }
+                if (i == 3) {
+                    aplicacion.reproducirAudio(audio[3], 1000, siguiente);
+                    animacionEntrada($("#info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
+
+                }
+
+                if (i == 4) {
+                    aplicacion.reproducirAudio(audio[4], 1000, terminaAudio);
+                    animacionEntrada($("#info" + i), 'derecha-izquierda', .5, 0.3);
+                    // animacionEntrada($("#btn-sp"), 'derecha-izquierda', .5, 0.3);
+
+                    // $("#btnCerrar").click(function () {
+                    //     if ($(this).css('cursor') == 'pointer') {
+                    //         TweenMax.killTweensOf($(this));
+                    //         $(this).css({
+                    //             'opacity': '1'
+                    //         });
+                    //     }
+                    //     animacion_salida($("#info-sp"), "default", .5, 0);
+                    //     animacion_salida($("#btnCerrar"), "default", .5, 0);
+                    // });
+                    // $("#btn-sp").click(function () {
+                    //     if ($(this).css('cursor') == 'pointer') {
+                    //         TweenMax.killTweensOf($(this));
+                    //         $(this).css({
+                    //             'opacity': '1'
+                    //         });
+                    //     }
+                    //     animacionEntrada($("#info-sp"), "default", .5, 0);
+                    //     animacionEntrada($("#btnCerrar"), "default", .5, 0);
+                    // });
+
+                }
+                checa();
+                console.log(i);
+
+            });
+
+            function terminaAudio() {
+                terminarPantalla();
+            }
+
+            btnReg.click(function () {
+                if (btnReg.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btnReg);
+                    btnReg.css({
+                        'opacity': '1'
+                    });
+                }
+                i -= 1;
+                salen();
+                animacionEntrada($("#info" + i), 'izquierda-derecha', .5, 0.3)
+                if (i == 2) {
+                    aplicacion.reproducirAudio(audio[2], 1000, siguiente);
+                    animacionEntrada($("#info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
+                }
+                if (i == 3) {
+                    aplicacion.reproducirAudio(audio[3], 1000, siguiente);
+                    animacionEntrada($("info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
+
+                }
+                if (i == 4) {
+                    aplicacion.reproducirAudio(audio[2], 1000, atras);
+                    animacionEntrada($("#info" + i), 'izquierda-derecha', .5, 0.3);
+                    // animacionEntrada($("#btn-sp"), 'derecha-izquierda', .5, 0.3);
+
+                }
+                checa();
+                console.log(i);
+
+
+            });
+
+            function siguiente() {
+                parpadea(btnSig).show();
+            }
+
+            function atras() {
+                btnReg.show();
+                btnReg.css({
+                    'cursor': 'pointer',
+                    'opacity': 1,
+                });
+
+            }
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+
+</html>

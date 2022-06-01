@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página 03 | I4L</title>
+    <title>Página 04 | I4L</title>
 </head>
 <body>
     <img class="elementos" id="pleca" src="./img/pagina04/pleca.png" data-posX="0" data-posY="0" alt="">
 
     <img class="elementos" id="fondo" src="./img/pagina04/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="btnCCT" src="./img/pagina04/btnCCT.png" data-posX="362" data-posY="335" alt="">
+    <img class="elementos" id="btnLFT" src="./img/pagina04/btnLFT.png" data-posX="472" data-posY="440" alt="">
+
+    <img class="elementos" id="infoCCT" src="./img/pagina04/infoCCT.png" data-posX="25" data-posY="160" alt="">
+    <img class="elementos" id="infoLFT" src="./img/pagina04/infoLFT.png" data-posX="280" data-posY="420" alt="">
 
     <!-- Script de la página -->
     <script type="module">
         import {aplicacion} from './js/app.js';
-        import {animacionEntrada} from './js/animaciones.js';
+        import {animacionEntrada, animacionSalida} from './js/animaciones.js';
         import {cargando} from './js/funciones.js';
 
         jQuery(function($){
@@ -28,7 +33,11 @@
 
             //Crear Variables-----------------------------------------------------
             const pleca = $('#pleca');
-            const fondo = $('#fondo');;
+            const fondo = $('#fondo');
+            const btnCCT = $('#btnCCT');
+            const btnLFT = $('#btnLFT');
+            const infoCCT = $('#infoCCT');
+            const infoLFT = $('#infoLFT');
 
             //Iniciar contenido de la página--------------------------------------
             
@@ -39,6 +48,8 @@
                 aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
                 animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
                 animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+                animacionEntrada(btnCCT, 'derecha-izquierda', 1, 1);
+                animacionEntrada(btnLFT, 'derecha-izquierda', 1, 1);
             }            
 
             function terminaAudio(){
@@ -50,6 +61,34 @@
             function terminaPagina(){
                 aplicacion.terminaPantalla()
             }
+
+            //Funcionalidad btnCCT---------------------------------------------------
+            btnCCT.css('cursor', 'pointer');
+            btnCCT.click(function(){
+                animacionEntrada(infoCCT, 'default', .5, .5);
+                infoCCT.css('cursor', 'pointer');
+                    
+            });
+
+            infoCCT.click(function(){
+                TweenMax.killTweensOf(infoCCT);
+                animacionSalida(infoCCT, 'default', .5, .5);
+            });
+
+            //Funcionalidad btnLFT---------------------------------------------------
+            btnLFT.css('cursor', 'pointer');
+            btnLFT.click(function(){
+                animacionEntrada(infoLFT, 'default', .5, .5);
+                infoLFT.css('cursor', 'pointer');
+                    
+            });
+
+            infoLFT.click(function(){
+                TweenMax.killTweensOf(infoLFT);
+                animacionSalida(infoLFT, 'default', .5, .5);
+            });
+
+
         });
     </script>
 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 07 | I4L</title>
+</head>
+
+<body>
+    <img class="elementos" id="pleca" src="./img/pagina07/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo" src="./img/pagina07/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="btnRL" src="./img/pagina07/btnRL.png" data-posX="605" data-posY="375" alt="">
+    <img class="elementos" id="btnRH" src="./img/pagina07/btnRRHH.png" data-posX="825" data-posY="345" alt="">
+    <img class="elementos" id="btnSindi" src="./img/pagina07/btnSindicato.png" data-posX="635" data-posY="410" alt="">
+    <img class="elementos" id="infoRL" src="./img/pagina07/infoRL.png" data-posX="640" data-posY="280" alt="">
+    <img class="elementos" id="infoRH" src="./img/pagina07/infoRH.png" data-posX="880" data-posY="250" alt="">
+    <img class="elementos" id="infoSindi" src="./img/pagina07/infoSindi.png" data-posX="500" data-posY="450" alt="">
+
+    <!-- Script de la página -->
+    <script type="module">
+        import { aplicacion } from './js/app.js';
+        import { animacionEntrada, animacionSalida} from './js/animaciones.js';
+        import { cargando } from './js/funciones.js';
+
+        jQuery(function ($) {
+
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_07_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_07_02.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const pleca = $('#pleca');
+            const fondo = $('#fondo');
+            const btnRL = $('#btnRL');
+            const btnRH = $('#btnRH');
+            const btnSindi = $('#btnSindi');
+            const infoRL = $('#infoRL');
+            const infoRH = $('#infoRH');
+            const infoSindi = $('#infoSindi');
+
+            //Iniciar contenido de la página--------------------------------------
+
+            cargando(iniciarPagina);
+
+            function iniciarPagina() {
+
+                aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
+                animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+                animacionEntrada(btnRL, 'derecha-izquierda', 1, 1);
+                animacionEntrada(btnRH, 'derecha-izquierda', 1, 1);
+                animacionEntrada(btnSindi, 'derecha-izquierda', 1, 1);
+            }
+
+            function terminaAudio() {
+                aplicacion.reproducirAudio(audio[1], terminaPagina, 1000)
+            }
+            function terminaPagina() {
+                aplicacion.terminaPantalla()
+            }
+
+            //Funcionalidad btnRL--------------------------------------------------------
+            btnRL.css('cursor', 'pointer');
+            btnRL.click(function () {
+                animacionEntrada(infoRL, 'default', .5, .5);
+                infoRL.css('cursor', 'pointer');
+            });
+
+            infoRL.click(function () {
+                TweenMax.killTweensOf(infoRL);
+                animacionSalida(infoRL, 'default', .5, .5);
+            });
+
+            //Funcionalidad btnRH--------------------------------------------------------
+            btnRH.css('cursor', 'pointer');
+            btnRH.click(function () {
+                animacionEntrada(infoRH, 'default', .5, .5);
+                infoRH.css('cursor', 'pointer');
+            });
+
+            infoRH.click(function () {
+                TweenMax.killTweensOf(infoRH);
+                animacionSalida(infoRH, 'default', .5, .5);
+            });
+
+            //Funcionalidad btnSindicato--------------------------------------------------------
+            btnSindi.css('cursor', 'pointer');
+            btnSindi.click(function () {
+                animacionEntrada(infoSindi, 'default', .5, .5);
+                infoSindi.css('cursor', 'pointer');
+            });
+
+            infoSindi.click(function () {
+                TweenMax.killTweensOf(infoSindi);
+                animacionSalida(infoSindi, 'default', .5, .5);
+            });
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+
+</html>

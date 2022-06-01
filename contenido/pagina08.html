@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 08 | I4L</title>
+</head>
+<body>
+    <img class="elementos" id="pleca" src="./img/pagina08/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo" src="./img/pagina08/fondo.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos" id="img01" src="./img/pagina08/img01.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="img02" src="./img/pagina08/img02.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="img03" src="./img/pagina08/img03.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="img04" src="./img/pagina08/img04.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="img05" src="./img/pagina08/img05.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="img06" src="./img/pagina08/img06.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="img07" src="./img/pagina08/img07.png" data-posX="0" data-posY="0" alt="">
+   
+    <!-- Script de la página -->
+    <script type="module">
+        import {aplicacion} from './js/app.js';
+        import {animacionEntrada} from './js/animaciones.js';
+        import {cargando} from './js/funciones.js';
+
+        jQuery(function($){
+            
+            // Cargar Audios------------------------------------------------------
+            const audio = [
+                new Audio('./audios/Sanofi_Reforzamiento_08_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_08_02.mp3'),
+            ]
+
+            //Crear Variables-----------------------------------------------------
+            const pleca = $('#pleca');
+            const fondo = $('#fondo');
+            const img01 = $('#img01');
+            const img02 = $('#img02');
+            const img03 = $('#img03');
+            const img04 = $('#img04');
+            const img05 = $('#img05');
+            const img06 = $('#img06');
+            const img07 = $('#img07');
+
+
+            //Iniciar contenido de la página--------------------------------------
+            
+            cargando(iniciarPagina);
+
+            function iniciarPagina(){
+
+                aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
+                animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
+                animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
+
+                animacionEntrada(img01, 'arriba_abajo', 1, 3);
+                animacionEntrada(img02, 'arriba_abajo', 1, 6);
+                animacionEntrada(img03, 'arriba_abajo', 1, 10);
+                animacionEntrada(img04, 'arriba_abajo', 1, 14);
+                animacionEntrada(img05, 'arriba_abajo', 1, 17);
+                animacionEntrada(img06, 'arriba_abajo', 1, 20);
+                animacionEntrada(img07, 'arriba_abajo', 1, 26);
+            }           
+            
+            function terminaAudio(){
+                aplicacion.reproducirAudio(audio[1], terminaPagina, 1000);
+            }
+
+            function terminaPagina(){
+                aplicacion.terminaPantalla()
+            }
+        });
+    </script>
+
+    <!-- Termina Script -->
+</body>
+</html>
