@@ -43,6 +43,12 @@ modoDesarrollador();
 
 //Redimensionar tamaño------------------------------------------------------------
 redimensionar();
+let intervalo; 
 $(window).resize(function(){
-    aplicacion.recargarPag();
+    clearTimeout(intervalo);
+    intervalo = setTimeout(escalar, 100);
 });
+
+function escalar(){
+    aplicacion.recargarPag();
+}

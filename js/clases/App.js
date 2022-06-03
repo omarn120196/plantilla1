@@ -6,6 +6,7 @@ import {cargarPagina,
         desactivarBotonSiguiente, 
         activarBotonAtras,
         activarBotonSiguiente,
+        actualizarTemario,
         redimensionar} 
 from '../funciones.js';
 
@@ -40,21 +41,23 @@ export class App{
         conectarLMS();
         calcularTiempo();
         desactivarBotonSiguiente();
+        actualizarTemario(this.noPagina);
         actualizarPorcentaje(this.noPagina, this.totalPaginas);
         iniciarContenido(this.noPagina);        
     }
 
-    //Esta función solo es para modo desarrollador-------------------------------
+    //Esta función solo es para modo desarrollador y temario-------------------------
     irPagina(noPagina){
 
-        noPagina = noPagina - 1;
+        const pagina = noPagina - 1;
 
-        if(noPagina <= this.totalPaginas && noPagina >= 0){
-            this.paginasActivas = noPagina;
-            this.noPagina = noPagina;
+        if(pagina <= this.totalPaginas && pagina >= 0){
+            this.noPagina = pagina;
 
+            this.activarNavegacion();
             desactivarBotonSiguiente();
             this.detenerAudios();
+            actualizarTemario(this.noPagina);
             actualizarPorcentaje(this.noPagina, this.totalPaginas);
             cargarPagina(this.noPagina, this.paginasActivas);
         }
@@ -73,6 +76,7 @@ export class App{
             }
 
             this.noPagina++;
+            actualizarTemario(this.noPagina);
             desactivarBotonSiguiente();
             asignarLocacion(this.noPagina);
             this.detenerAudios();
@@ -100,7 +104,7 @@ export class App{
 
     recargarPag(){
         this.detenerAudios();
-        cargarPagina(this.noPagina);
+        cargarPagina(this.noPagina, this.paginasActivas);
     }
 
     desplegarMenu(){

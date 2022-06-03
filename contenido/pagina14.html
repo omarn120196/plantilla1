@@ -38,12 +38,15 @@
             cargando(iniciarPagina);
 
             function iniciarPagina(){
-                aplicacion.reproducirAudio(audio[0], 1000);
+                aplicacion.reproducirAudio(audio[0], activaEvaluacion, 2000);
                 animacionEntrada(titulo, 'izquierda-derecha', 1, 1);
                 animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
-                animacionEntrada(texto, 'default', 1, 2);
+                animacionEntrada(texto, 'default', 1, 2);       
+            }
+
+            function activaEvaluacion(){
                 
-                parpadea(btnEvaluacion, .8 , 3);
+                parpadea(btnEvaluacion);
 
                 btnEvaluacion.click(function(){
                     aplicacion.nextPag();

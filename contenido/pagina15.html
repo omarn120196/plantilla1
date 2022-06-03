@@ -133,61 +133,61 @@
             }
 
             function verPregunta1(){
-                const pregunta = $('#pregunta1');
-                const resA = $('#a1');
-                const resB = $('#b1');
-                const resC = $('#c1');
-                let retro;
+                const pregunta1 = $('#pregunta1');
+                const resA1 = $('#a1');
+                const resB1 = $('#b1');
+                const resC1 = $('#c1');
+                let retro1;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA1.css('cursor', 'pointer');
+                resB1.css('cursor', 'pointer');
+                resC1.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta1, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA1, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB1, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC1, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA1.click(function(){
+                    verificar(resA1, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB1.click(function(){
+                    verificar(resB1, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC1.click(function(){
+                    verificar(resC1, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res1_${inciso}`);
+                    const evaluar1 = respuesta.data('respuesta');
+                    retro1 = $(`#res1_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar1 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro1, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro1, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta1, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA1, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB1, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC1, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro1, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta1.remove();
+                        resA1.remove();
+                        resB1.remove();
+                        resC1.remove();
 
                         verPregunta2();
                     }, 4000)
@@ -195,65 +195,65 @@
             }
 
             function verPregunta2(){
-                const pregunta = $('#pregunta2');
-                const resA = $('#a2');
-                const resB = $('#b2');
-                const resC = $('#c2');
-                let retro;
+                const pregunta2 = $('#pregunta2');
+                const resA2 = $('#a2');
+                const resB2 = $('#b2');
+                const resC2 = $('#c2');
+                let retro2;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA2.css('cursor', 'pointer');
+                resB2.css('cursor', 'pointer');
+                resC2.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta2, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA2, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB2, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC2, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA2.click(function(){
+                    verificar(resA2, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB2.click(function(){
+                    verificar(resB2, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC2.click(function(){
+                    verificar(resC2, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA2.css('cursor', 'default');
+                    resB2.css('cursor', 'default');
+                    resC2.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res2_${inciso}`);
+                    const evaluar2 = respuesta.data('respuesta');
+                    retro2 = $(`#res2_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar2 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro2, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro2, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta2, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA2, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB2, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC2, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro2, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta2.remove();
+                        resA2.remove();
+                        resB2.remove();
+                        resC2.remove();
 
                         verPregunta3();
                     }, 4000)
@@ -261,65 +261,65 @@
             }
 
             function verPregunta3(){
-                const pregunta = $('#pregunta3');
-                const resA = $('#a3');
-                const resB = $('#b3');
-                const resC = $('#c3');
-                let retro;
+                const pregunta3 = $('#pregunta3');
+                const resA3 = $('#a3');
+                const resB3 = $('#b3');
+                const resC3 = $('#c3');
+                let retro3;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA3.css('cursor', 'pointer');
+                resB3.css('cursor', 'pointer');
+                resC3.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta3, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA3, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB3, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC3, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA3.click(function(){
+                    verificar(resA3, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB3.click(function(){
+                    verificar(resB3, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC3.click(function(){
+                    verificar(resC3, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA3.css('cursor', 'default');
+                    resB3.css('cursor', 'default');
+                    resC3.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res3_${inciso}`);
+                    const evaluar3 = respuesta.data('respuesta');
+                    retro3 = $(`#res3_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar3 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro3, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro3, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta3, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA3, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB3, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC3, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro3, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta3.remove();
+                        resA3.remove();
+                        resB3.remove();
+                        resC3.remove();
 
                         verPregunta4();
                     }, 4000)
@@ -327,65 +327,65 @@
             }
 
             function verPregunta4(){
-                const pregunta = $('#pregunta4');
-                const resA = $('#a4');
-                const resB = $('#b4');
-                const resC = $('#c4');
-                let retro;
+                const pregunta4 = $('#pregunta4');
+                const resA4 = $('#a4');
+                const resB4 = $('#b4');
+                const resC4 = $('#c4');
+                let retro4;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA4.css('cursor', 'pointer');
+                resB4.css('cursor', 'pointer');
+                resC4.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta4, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA4, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB4, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC4, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA4.click(function(){
+                    verificar(resA4, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB4.click(function(){
+                    verificar(resB4, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC4.click(function(){
+                    verificar(resC4, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA4.css('cursor', 'default');
+                    resB4.css('cursor', 'default');
+                    resC4.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res4_${inciso}`);
+                    const evaluar4 = respuesta.data('respuesta');
+                    retro4 = $(`#res4_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar4 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro4, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro4, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta4, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA4, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB4, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC4, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro4, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta4.remove();
+                        resA4.remove();
+                        resB4.remove();
+                        resC4.remove();
 
                         verPregunta5();
                     }, 4000)
@@ -393,55 +393,55 @@
             }
 
             function verPregunta5(){
-                const pregunta = $('#pregunta5');
-                const resA = $('#a5');
-                const resB = $('#b5');
-                let retro;
+                const pregunta5 = $('#pregunta5');
+                const resA5 = $('#a5');
+                const resB5 = $('#b5');
+                let retro5;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
+                resA5.css('cursor', 'pointer');
+                resB5.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
+                animacionEntrada(pregunta5, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA5, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB5, 'derecha-izquierda', 1, 2);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA5.click(function(){
+                    verificar(resA5, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB5.click(function(){
+                    verificar(resB5, 2);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
+                    resA5.css('cursor', 'default');
+                    resB5.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res5_${inciso}`);
+                    const evaluar5 = respuesta.data('respuesta');
+                    retro5 = $(`#res5_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar5 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro5, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro5, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta5, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA5, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB5, 'derecha-izquierda', 1, 2);
+                    animacionSalida(retro5, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
+                        pregunta5.remove();
+                        resA5.remove();
+                        resB5.remove();
 
                         verPregunta6();
                     }, 4000)
@@ -449,65 +449,65 @@
             }
 
             function verPregunta6(){
-                const pregunta = $('#pregunta6');
-                const resA = $('#a6');
-                const resB = $('#b6');
-                const resC = $('#c6');
-                let retro;
+                const pregunta6 = $('#pregunta6');
+                const resA6 = $('#a6');
+                const resB6 = $('#b6');
+                const resC6 = $('#c6');
+                let retro6;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA6.css('cursor', 'pointer');
+                resB6.css('cursor', 'pointer');
+                resC6.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta6, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA6, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB6, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC6, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA6.click(function(){
+                    verificar(resA6, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB6.click(function(){
+                    verificar(resB6, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC6.click(function(){
+                    verificar(resC6, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA6.css('cursor', 'default');
+                    resB6.css('cursor', 'default');
+                    resC6.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res6_${inciso}`);
+                    const evaluar6 = respuesta.data('respuesta');
+                    retro6 = $(`#res6_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar6 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro6, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro6, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta6, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA6, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB6, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC6, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro6, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta6.remove();
+                        resA6.remove();
+                        resB6.remove();
+                        resC6.remove();
 
                         verPregunta7();
                     }, 4000)
@@ -515,65 +515,65 @@
             }
 
             function verPregunta7(){
-                const pregunta = $('#pregunta7');
-                const resA = $('#a7');
-                const resB = $('#b7');
-                const resC = $('#c7');
-                let retro;
+                const pregunta7 = $('#pregunta7');
+                const resA7 = $('#a7');
+                const resB7 = $('#b7');
+                const resC7 = $('#c7');
+                let retro7;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA7.css('cursor', 'pointer');
+                resB7.css('cursor', 'pointer');
+                resC7.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta7, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA7, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB7, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC7, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA7.click(function(){
+                    verificar(resA7, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB7.click(function(){
+                    verificar(resB7, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC7.click(function(){
+                    verificar(resC7, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA7.css('cursor', 'default');
+                    resB7.css('cursor', 'default');
+                    resC7.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res7_${inciso}`);
+                    const evaluar7 = respuesta.data('respuesta');
+                    retro7 = $(`#res7_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar7 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro7, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro7, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta7, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA7, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB7, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC7, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro7, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta7.remove();
+                        resA7.remove();
+                        resB7.remove();
+                        resC7.remove();
 
                         verPregunta8();
                     }, 4000)
@@ -581,65 +581,65 @@
             }
 
             function verPregunta8(){
-                const pregunta = $('#pregunta8');
-                const resA = $('#a8');
-                const resB = $('#b8');
-                const resC = $('#c8');
-                let retro;
+                const pregunta8 = $('#pregunta8');
+                const resA8 = $('#a8');
+                const resB8 = $('#b8');
+                const resC8 = $('#c8');
+                let retro8;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA8.css('cursor', 'pointer');
+                resB8.css('cursor', 'pointer');
+                resC8.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta8, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA8, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB8, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC8, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA8.click(function(){
+                    verificar(resA8, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB8.click(function(){
+                    verificar(resB8, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC8.click(function(){
+                    verificar(resC8, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA8.css('cursor', 'default');
+                    resB8.css('cursor', 'default');
+                    resC8.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res8_${inciso}`);
+                    const evaluar8 = respuesta.data('respuesta');
+                    retro8 = $(`#res8_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar8 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro8, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro8, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta8, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA8, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB8, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC8, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro8, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta8.remove();
+                        resA8.remove();
+                        resB8.remove();
+                        resC8.remove();
 
                         verPregunta9();
                     }, 4000)
@@ -647,65 +647,65 @@
             }
 
             function verPregunta9(){
-                const pregunta = $('#pregunta9');
-                const resA = $('#a9');
-                const resB = $('#b9');
-                const resC = $('#c9');
-                let retro;
+                const pregunta9 = $('#pregunta9');
+                const resA9 = $('#a9');
+                const resB9 = $('#b9');
+                const resC9 = $('#c9');
+                let retro9;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA9.css('cursor', 'pointer');
+                resB9.css('cursor', 'pointer');
+                resC9.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta9, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA9, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB9, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC9, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA9.click(function(){
+                    verificar(resA9, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB9.click(function(){
+                    verificar(resB9, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC9.click(function(){
+                    verificar(resC9, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA9.css('cursor', 'default');
+                    resB9.css('cursor', 'default');
+                    resC9.css('cursor', 'default');
 
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res9_${inciso}`);
+                    const evaluar9 = respuesta.data('respuesta');
+                    retro9 = $(`#res9_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar9 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro9, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro9, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta9, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA9, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB9, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC9, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro9, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta9.remove();
+                        resA9.remove();
+                        resB9.remove();
+                        resC9.remove();
 
                         verPregunta10();
                     }, 4000)
@@ -713,65 +713,65 @@
             }
 
             function verPregunta10(){
-                const pregunta = $('#pregunta10');
-                const resA = $('#a10');
-                const resB = $('#b10');
-                const resC = $('#c10');
-                let retro;
+                const pregunta10 = $('#pregunta10');
+                const resA10 = $('#a10');
+                const resB10 = $('#b10');
+                const resC10 = $('#c10');
+                let retro10;
 
-                resA.css('cursor', 'pointer');
-                resB.css('cursor', 'pointer');
-                resC.css('cursor', 'pointer');
+                resA10.css('cursor', 'pointer');
+                resB10.css('cursor', 'pointer');
+                resC10.css('cursor', 'pointer');
 
-                animacionEntrada(pregunta, 'arriba-abajo', 1, .8);
-                animacionEntrada(resA, 'derecha-izquierda', 1, 1.5);
-                animacionEntrada(resB, 'derecha-izquierda', 1, 2);
-                animacionEntrada(resC, 'derecha-izquierda', 1, 2.5);
+                animacionEntrada(pregunta10, 'arriba-abajo', 1, .8);
+                animacionEntrada(resA10, 'derecha-izquierda', 1, 1.5);
+                animacionEntrada(resB10, 'derecha-izquierda', 1, 2);
+                animacionEntrada(resC10, 'derecha-izquierda', 1, 2.5);
 
-                resA.click(function(){
-                    verificar(resA, 1);
+                resA10.click(function(){
+                    verificar(resA10, 1);
                 });
 
-                resB.click(function(){
-                    verificar(resB, 2);
+                resB10.click(function(){
+                    verificar(resB10, 2);
                 });
 
-                resC.click(function(){
-                    verificar(resC, 3);
+                resC10.click(function(){
+                    verificar(resC10, 3);
                 });
 
                 function verificar(respuesta, inciso){
-                    resA.css('cursor', 'default');
-                    resB.css('cursor', 'default');
-                    resC.css('cursor', 'default');
+                    resA10.css('cursor', 'default');
+                    resB10.css('cursor', 'default');
+                    resC10.css('cursor', 'default');
                     
-                    const evaluar = respuesta.data('respuesta');
-                    retro = $(`#res10_${inciso}`);
+                    const evaluar10 = respuesta.data('respuesta');
+                    retro10 = $(`#res10_${inciso}`);
                     
-                    if(evaluar == 'p'){
+                    if(evaluar10 == 'p'){
                         aplicacion.reproducirAudio(audio[0], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro10, 'default', .3);
                         puntos++;
                     }
                     else{
                         aplicacion.reproducirAudio(audio[1], ocultarPregunta);
-                        animacionEntrada(retro, 'default', .3);
+                        animacionEntrada(retro10, 'default', .3);
                     }
                 }
 
                 function ocultarPregunta(){
-                    animacionSalida(pregunta, 'abajo-arriba', 1, .8);
-                    animacionSalida(resA, 'derecha-izquierda', 1, 1.5);
-                    animacionSalida(resB, 'derecha-izquierda', 1, 2);
-                    animacionSalida(resC, 'derecha-izquierda', 1, 2.5);
-                    animacionSalida(retro, 'default', 1);
+                    animacionSalida(pregunta10, 'abajo-arriba', 1, .8);
+                    animacionSalida(resA10, 'derecha-izquierda', 1, 1.5);
+                    animacionSalida(resB10, 'derecha-izquierda', 1, 2);
+                    animacionSalida(resC10, 'derecha-izquierda', 1, 2.5);
+                    animacionSalida(retro10, 'default', 1);
                 
                     setTimeout(()=>{
                         
-                        pregunta.remove();
-                        resA.remove();
-                        resB.remove();
-                        resC.remove();
+                        pregunta10.remove();
+                        resA10.remove();
+                        resB10.remove();
+                        resC10.remove();
 
                         evaluar();
                     }, 4000)
@@ -812,6 +812,7 @@
 
                 animacionEntrada(retro, 'izquierda-derecha', 1);
                 animacionEntrada(p, 'default', 1, 1);
+                aplicacion.terminaPantalla();
             }
 
             function retroNegativa(calificacion){

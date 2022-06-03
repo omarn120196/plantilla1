@@ -1,4 +1,4 @@
-import { barraPorcentaje, btnAudio, btnMenu, btnRecargar, btnAtras, btnAdelante } from "./selectores.js"
+import { barraPorcentaje, btnAudio, btnMenu, btnRecargar, btnAtras, btnAdelante, menuLateral, cuadros, nombreTemas, titulo } from "./selectores.js"
 
 //Arreglo con la información de las páginas--------------------------------------
 export const paginas = [
@@ -109,4 +109,23 @@ export const pBotonAdelante = {
     left: parseInt(btnAdelante.css('left')),
     width: btnAdelante.width(),
     heigth: btnAdelante.height()
+}
+
+export const pMenuLateral = {
+    top: 0,
+    left: 0,
+    width: menuLateral.width(),
+    height: menuLateral.height()
+}
+
+export const pCuadros = {
+    fontSize: 18
+}
+
+export const pTitulos = {
+    fontSize: 32
+}
+
+export const pNombreTemas = {
+    fontSize: 14
 }

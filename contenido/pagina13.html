@@ -7,9 +7,9 @@
     <title>Página 13 | I4L</title>
 </head>
 <body>
-    <img class="elementos" id="pleca" src="./img/pagina13/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pleca13" src="./img/pagina13/pleca.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="calendario" src="./img/pagina13/calendario.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="info" src="./img/pagina13/info.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info13" src="./img/pagina13/info.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="morado" src="./img/pagina13/morado.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="naranja" src="./img/pagina13/naranja.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="verde" src="./img/pagina13/verde.png" data-posX="0" data-posY="0" alt="">
@@ -33,9 +33,9 @@
             ]
 
             //Crear Variables-----------------------------------------------------
-            const pleca = $('#pleca');
+            const pleca = $('#pleca13');
             const calendario = $('#calendario');
-            const info = $('#info');
+            const info = $('#info13');
             const circulom = $('#morado');
             const circulon = $('#naranja');
             const circulov = $('#verde');
@@ -46,37 +46,40 @@
 
             function iniciarPagina(){
 
-                aplicacion.reproducirAudio(audio[0], terminaAudio, 1000);
+                aplicacion.reproducirAudio(audio[0], presentaInfo, 1000);
                 animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
                 animacionEntrada(calendario, 'derecha-izquierda', 1, 1);
                 animacionEntrada(info, 'derecha-izquierda', 1, 1);
             }            
 
-            function terminaAudio(){
-                aplicacion.reproducirAudio(audio[1], terminaAudio1, 1000);
-            }
-            function terminaAudio1(){
-                aplicacion.reproducirAudio(audio[2], terminaAudio2, 1000);
-            }
-            function terminaAudio2(){
-                aplicacion.reproducirAudio(audio[3], terminaAudio3, 1000);
-            }
-            function terminaAudio3(){
-                animacionEntrada(circulov, 'izquierda-derecha', 1, .5);
-                aplicacion.reproducirAudio(audio[4], terminaAudio4, 1000);
-            }
-            function terminaAudio4(){
-                animacionEntrada(circulom, 'izquierda-derecha', 1, .5);
-                aplicacion.reproducirAudio(audio[5], terminaAudio5, 1000);
-            }
-            function terminaAudio5(){
-                animacionEntrada(circulon, 'izquierda-derecha', 1, .5);
-                aplicacion.reproducirAudio(audio[6], terminaPagina, 1000);
+            function presentaInfo(){
+                aplicacion.reproducirAudio(audio[1], puntos, 500);
             }
 
-            function terminaPagina(){
-                aplicacion.terminaPantalla()
+            function puntos(){
+                aplicacion.reproducirAudio(audio[2], pagoSemanal, 500);
             }
+
+            function pagoSemanal(){
+                aplicacion.reproducirAudio(audio[3], pagoIncidencias, 1000);
+                animacionEntrada(circulov, 'derecha-izquierda', 1, .5);
+            }
+            
+            function pagoIncidencias(){
+                aplicacion.reproducirAudio(audio[4], calIncidencias, 1000);
+                animacionEntrada(circulom, 'derecha-izquierda', 1, .5);
+            }
+
+            function calIncidencias(){
+                aplicacion.reproducirAudio(audio[5], finPantalla, 1000);
+                animacionEntrada(circulon, 'derecha-izquierda', 1, .5);
+            }
+
+            function finPantalla(){
+                aplicacion.terminaPantalla();
+            }
+
+
         });
     </script>
 

@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <img class="elementos" id="pleca" src="./img/pagina06/pleca.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="fondo" src="./img/pagina06/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pleca6" src="./img/pagina06/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo6" src="./img/pagina06/fondo.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="btnNota" src="./img/pagina06/btnNota.png" data-posX="850" data-posY="230" alt="">
     <img class="elementos" id="nota1" src="./img/pagina06/nota1.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="nota2" src="./img/pagina06/nota2.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="btnSig" src="./img/pagina06/btnSig.png" data-posX="740" data-posY="370" alt="">
-    <img class="elementos" id="btnReg" src="./img/pagina06/btnReg.png" data-posX="740" data-posY="370" alt="">
+    <img class="elementos" id="btnSig6_1" src="./img/pagina06/btnSig.png" data-posX="740" data-posY="370" alt="">
+    <img class="elementos" id="btnReg6_1" src="./img/pagina06/btnReg.png" data-posX="740" data-posY="370" alt="">
     <img class="elementos" id="btnCerrar" src="./img/pagina06/btnCerrar.png" data-posX="700" data-posY="170" alt="">
 
     <!-- Script de la página -->
@@ -37,13 +37,13 @@
             ]
 
             //Crear Variables-----------------------------------------------------
-            const pleca = $('#pleca');
-            const fondo = $('#fondo');
+            const pleca = $('#pleca6');
+            const fondo = $('#fondo6');
             const btnNota = $('#btnNota');
             const nota1 = $('#nota1');
             const nota2 = $('#nota2');
-            const btnSig = $('#btnSig');
-            const btnReg = $('#btnReg');
+            const btnSig = $('#btnSig6_1');
+            const btnReg = $('#btnReg6_1');
             const btnCerrar = $('#btnCerrar');
 
             //Iniciar contenido de la página--------------------------------------
@@ -99,8 +99,8 @@
                 }
 
                 aplicacion.reproducirAudio(audio[5], terminaAudio, 1000);
-                animacionSalida(nota1, "desaparece", .5, 0.3);
-                animacionSalida(btnSig, "desaparece", .5, 0.3);
+                animacionSalida(nota1, "default", .5, 0.3);
+                animacionSalida(btnSig, "default", .5, 0.3);
                 animacionEntrada(nota2, "default", .5, 0.3);
                 animacionEntrada(btnReg, "default", .5, 0.3);
 
@@ -117,10 +117,10 @@
                         'opacity': '1'
                     });
                 }
-                animacionSalida(nota2, "desaparece", .5, 0.3);
-                animacionSalida(btnReg, "desaparece", .5, 0.3);
-                animacionSalida(btnSig, "desaparece", .5, 0.3);
-                animacionSalida(btnCerrar, "desaparece", .5, 0.3);
+                animacionSalida(nota2, "default", .5, 0.3);
+                animacionSalida(btnReg, "default", .5, 0.3);
+                animacionSalida(btnSig, "default", .5, 0.3);
+                animacionSalida(btnCerrar, "default", .5, 0.3);
 
                 aplicacion.terminaPantalla()
             });
@@ -135,9 +135,9 @@
                 }
 
                 aplicacion.reproducirAudio(audio[4], 1000);
-                animacionSalida(nota2, "desaparece", .5, 0.3);
-                animacionSalida(btnCerrar, "desaparece", .5, 0.3);
-                animacionSalida(btnReg, "desaparece", .5, 0.3);
+                animacionSalida(nota2, "default", .5, 0.3);
+                animacionSalida(btnCerrar, "default", .5, 0.3);
+                animacionSalida(btnReg, "default", .5, 0.3);
                 animacionEntrada(nota1, "default", .5, 0.3);
                 animacionEntrada(btnSig, "default", .5, 0.3);
             });

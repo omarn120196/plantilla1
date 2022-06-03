@@ -9,21 +9,20 @@
 </head>
 
 <body>
-    <img class="elementos" id="pleca" src="./img/pagina11/pleca.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="fondo" src="./img/pagina11/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pleca11" src="./img/pagina11/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="fondo11" src="./img/pagina11/fondo.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="carrusel" src="./img/pagina11/carrusel.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="info1" src="./img/pagina11/info01.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="info2" src="./img/pagina11/info02.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="info3" src="./img/pagina11/info03.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="info4" src="./img/pagina11/info04.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="btnSig" src="./img/pagina11/btn-sig.png" data-posX="943" data-posY="430" alt="">
-    <img class="elementos" id="btnReg" src="./img/pagina11/btn-atras.png" data-posX="943" data-posY="480" alt="">
+    <img class="elementos info-carrusel" id="info1" src="./img/pagina11/info01.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos info-carrusel" id="info2" src="./img/pagina11/info02.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos info-carrusel" id="info3" src="./img/pagina11/info03.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos info-carrusel" id="info4" src="./img/pagina11/info04.png" data-posX="0" data-posY="0" alt="">
 
     <!-- Script de la página -->
     <script type="module">
         import { aplicacion } from './js/app.js';
         import { animacionEntrada, animacionSalida, parpadea } from './js/animaciones.js';
         import { cargando } from './js/funciones.js';
+        import { contendorPáginas } from './js/selectores.js';
 
         jQuery(function ($) {
 
@@ -37,17 +36,42 @@
             ]
 
             //Crear Variables-----------------------------------------------------
-            const pleca = $('#pleca');
-            const fondo = $('#fondo');
+            const pleca = $('#pleca11');
+            const fondo = $('#fondo11');
             const carrusel = $('#carrusel');
-            const info01 = $('#info1');
-            const info02 = $('#info02');
-            const info03 = $('#info03');
-            const info04 = $('#info04');
-            const btnSig = $('#btnSig');
-            const btnReg = $('#btnReg');
+            const infoCarrusel = $('.info-carrusel');
+            let botonSiguiente;
+            let botonAtras;
 
-            var i = 1;
+            //Crear botón atras-------------------------------------------
+            function crearAtras(){
+                const btnAtras = $('<img>');
+                btnAtras.attr('src', './img/pagina11/btn-atras.png');
+                btnAtras.addClass('elementos')
+                btnAtras.css({
+                    'top': '480px',
+                    'left': '943px',
+                });
+
+                contendorPáginas.append(btnAtras);
+
+                return btnAtras;
+            }
+            
+            //Crear botón adelante----------------------------------------
+            function crearAdelante(){
+                const btnAdelante = $('<img>');
+                btnAdelante.attr('src', './img/pagina11/btn-sig.png');
+                btnAdelante.addClass('elementos')
+                btnAdelante.css({
+                    'top': '430px',
+                    'left': '943px',
+                });
+
+                contendorPáginas.append(btnAdelante);
+
+                return btnAdelante;
+            }
 
             //Iniciar contenido de la página--------------------------------------
 
@@ -55,144 +79,70 @@
 
             function iniciarPagina() {
 
-                aplicacion.reproducirAudio(audio[0], terminaAudio1, 1000);
+                aplicacion.reproducirAudio(audio[0], iniciarCarrusel, 1000);
                 animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
                 animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
                 animacionEntrada(carrusel, 'derecha-izquierda', 1, 1);
             }
 
-            function terminaAudio1() {
-                aplicacion.reproducirAudio(audio[1], btnSiguiente, 1000);
-                animacionEntrada(info01, 'izquierda-derecha', 1, 1);
-            }
-
-            function btnSiguiente() {
-                parpadea(btnSig);
-            }
-
-            function salen() {
-                animacionSalida("#info1", "desaparece", 0);
-                animacionSalida("#info2", "desaparece", 0);
-                animacionSalida("#info3", "desaparece", 0);
-                animacionSalida("#info4", "desaparece", 0);
-                // animacionSalida(btn-sp, "desaparece", 0);
-            }
-
-            function checa() {
-                if (i == 4) {
-                    console.log("terminopagina" + i);
-                    btnSig.hide();
-
+            function iniciarCarrusel(noInfo = 0){
+                if(botonSiguiente){
+                    botonSiguiente.remove();
                 }
-                if (i == 1) {
-                    console.log("terminopaginainicial" + i);
-                    btnReg.hide();
-                    aplicacion.reproducirAudio(audio[1], 1000);
+                
+                const audioA = noInfo + 1;
 
-                }
-            }
+                aplicacion.reproducirAudio(audio[audioA], salida, 1000);
+                animacionEntrada(infoCarrusel.eq(noInfo), 'derecha-izquierda', 1, 1);
 
-            btnSig.click(function () {
-                if (btnSig.css('cursor') == 'pointer') {
-                    TweenMax.killTweensOf(btnSig);
-                    btnSig.css({
-                        'opacity': '1'
+                if(noInfo>0){
+                    botonAtras = crearAtras();
+                    animacionEntrada(botonAtras, 'default', .5, .5);
+
+                    botonAtras.css('cursor', 'pointer');
+                    botonAtras.click(function(){
+                        salidaAtras(noInfo);
                     });
                 }
-                salen();
-                i += 1;
-                console.log(i)
-                animacionEntrada($("#info" + i), 'derecha-izquierda', .5, 0.3);
 
-                if (i == 2) {
-                    aplicacion.reproducirAudio(audio[2], 1000, siguiente);
-                    animacionEntrada($("#info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
+                function salida(){
 
+                    if(noInfo<3){
+                        botonSiguiente = crearAdelante(); 
+                        animacionEntrada(botonSiguiente, 'default', 1, 1);
+                        botonSiguiente.css('cursor', 'pointer');
+
+                        botonSiguiente.click(function(){
+                            animacionSalida(botonSiguiente, 'default', .5, .5);
+                            animacionSalida(infoCarrusel.eq(noInfo), 'default', .5, .5);
+                            if(botonAtras){
+                                animacionSalida(botonAtras, 'default', .5, .5);
+                                botonAtras.remove();
+                            }
+                            
+                            botonSiguiente.remove();
+                            noInfo++;
+                            iniciarCarrusel(noInfo);
+
+                        });
+                    }
+                    else{
+                        aplicacion.terminaPantalla();
+                    }
                 }
-                if (i == 3) {
-                    aplicacion.reproducirAudio(audio[3], 1000, siguiente);
-                    animacionEntrada($("#info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
-
-                }
-
-                if (i == 4) {
-                    aplicacion.reproducirAudio(audio[4], 1000, terminaAudio);
-                    animacionEntrada($("#info" + i), 'derecha-izquierda', .5, 0.3);
-                    // animacionEntrada($("#btn-sp"), 'derecha-izquierda', .5, 0.3);
-
-                    // $("#btnCerrar").click(function () {
-                    //     if ($(this).css('cursor') == 'pointer') {
-                    //         TweenMax.killTweensOf($(this));
-                    //         $(this).css({
-                    //             'opacity': '1'
-                    //         });
-                    //     }
-                    //     animacion_salida($("#info-sp"), "default", .5, 0);
-                    //     animacion_salida($("#btnCerrar"), "default", .5, 0);
-                    // });
-                    // $("#btn-sp").click(function () {
-                    //     if ($(this).css('cursor') == 'pointer') {
-                    //         TweenMax.killTweensOf($(this));
-                    //         $(this).css({
-                    //             'opacity': '1'
-                    //         });
-                    //     }
-                    //     animacionEntrada($("#info-sp"), "default", .5, 0);
-                    //     animacionEntrada($("#btnCerrar"), "default", .5, 0);
-                    // });
-
-                }
-                checa();
-                console.log(i);
-
-            });
-
-            function terminaAudio() {
-                terminarPantalla();
             }
 
-            btnReg.click(function () {
-                if (btnReg.css('cursor') == 'pointer') {
-                    TweenMax.killTweensOf(btnReg);
-                    btnReg.css({
-                        'opacity': '1'
-                    });
-                }
-                i -= 1;
-                salen();
-                animacionEntrada($("#info" + i), 'izquierda-derecha', .5, 0.3)
-                if (i == 2) {
-                    aplicacion.reproducirAudio(audio[2], 1000, siguiente);
-                    animacionEntrada($("#info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
-                }
-                if (i == 3) {
-                    aplicacion.reproducirAudio(audio[3], 1000, siguiente);
-                    animacionEntrada($("info" + i + "_1"), 'derecha-izquierda', .5, 3, atras);
+            function salidaAtras(noInfo){
+                animacionSalida(botonAtras, 'default', .5, .5);
+                animacionSalida(botonSiguiente, 'default', .5, .5);
+                animacionSalida(infoCarrusel.eq(noInfo), 'default', .5, .5);
 
-                }
-                if (i == 4) {
-                    aplicacion.reproducirAudio(audio[2], 1000, atras);
-                    animacionEntrada($("#info" + i), 'izquierda-derecha', .5, 0.3);
-                    // animacionEntrada($("#btn-sp"), 'derecha-izquierda', .5, 0.3);
-
-                }
-                checa();
-                console.log(i);
-
-
-            });
-
-            function siguiente() {
-                parpadea(btnSig).show();
-            }
-
-            function atras() {
-                btnReg.show();
-                btnReg.css({
-                    'cursor': 'pointer',
-                    'opacity': 1,
-                });
-
+                botonSiguiente.remove();
+                botonAtras.remove();
+                
+                aplicacion.detenerAudios();
+                noInfo--;
+                iniciarCarrusel(noInfo);
             }
         });
     </script>

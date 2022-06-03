@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <img class="elementos" id="pleca" src="./img/pagina05/pleca.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pleca5" src="./img/pagina05/pleca.png" data-posX="0" data-posY="0" alt="">
 
     <img class="elementos" id="img" src="./img/pagina05/img01.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="btnSindi" src="./img/pagina05/btnSindi.png" data-posX="347" data-posY="160" alt="">
+    <img class="elementos" id="btnSindi5" src="./img/pagina05/btnSindi.png" data-posX="347" data-posY="160" alt="">
 
     <img class="elementos" id="btn01" src="./img/pagina05/btn01.png" data-posX="40" data-posY="310" alt="">
     <img class="elementos" id="btn02" src="./img/pagina05/btn02.png" data-posX="210" data-posY="350" alt="">
@@ -29,7 +29,12 @@
     <img class="elementos" id="info05" src="./img/pagina05/info05.png" data-posX="0" data-posY="107" alt="">
     <img class="elementos" id="info06" src="./img/pagina05/info06.png" data-posX="0" data-posY="107" alt="">
 
-    <img class="elementos" id="btnCerrar" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
+    <img class="elementos" id="btnCerrar1" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
+    <img class="elementos" id="btnCerrar2" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
+    <img class="elementos" id="btnCerrar3" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
+    <img class="elementos" id="btnCerrar4" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
+    <img class="elementos" id="btnCerrar5" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
+    <img class="elementos" id="btnCerrar6" src="./img/pagina05/btnCerrar.png" data-posX="750" data-posY="200" alt="">
 
 
     <!-- Script de la página -->
@@ -53,9 +58,9 @@
             ]
 
             //Crear Variables-----------------------------------------------------
-            const pleca = $('#pleca');
+            const pleca = $('#pleca5');
             const img = $('#img');
-            const btnSindi = $('#btnSindi');
+            const btnSindi = $('#btnSindi5');
 
             const btn01 = $('#btn01');
             const btn02 = $('#btn02');
@@ -63,7 +68,13 @@
             const btn04 = $('#btn04');
             const btn05 = $('#btn05');
             const btn06 = $('#btn06');
-            const btnCerrar = $('#btnCerrar');
+
+            const btnCerrar1 = $('#btnCerrar1');
+            const btnCerrar2 = $('#btnCerrar2');
+            const btnCerrar3 = $('#btnCerrar3');
+            const btnCerrar4 = $('#btnCerrar4');
+            const btnCerrar5 = $('#btnCerrar5');
+            const btnCerrar6 = $('#btnCerrar6');
 
             const infoSindi = $('#infoSindi');
             const info01 = $('#info01');
@@ -103,6 +114,7 @@
             //Funcionalidad btnSindicalizado---------------------------------------------------
             btnSindi.css('cursor', 'pointer');
             btnSindi.click(function () {
+                TweenMax.killTweensOf(btnSindi);
                 animacionEntrada(infoSindi, 'default', .5, .5);
                 infoSindi.css('cursor', 'pointer');
 
@@ -121,25 +133,28 @@
                         'opacity': '1',
                         'cursor': 'default'
                     });
-                }
-                aplicacion.reproducirAudio(audio[2], terminaAudio, 1000);
-                animacionEntrada(info01, 'default', 1, 1);
 
-                function terminaAudio() {
-                    parpadea(btnCerrar);
-                    btnCerrar.click(function () {
-                        if (btnCerrar.css('cursor') == 'pointer') {
-                            TweenMax.killTweensOf(btnCerrar);
-                            btnCerrar.css({
-                                'opacity': '1',
-                                'cursor': 'default'
-                            });
-                        }
-                        animacionSalida(info01, 'desaparece', .5, .5);
-                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
-                        parpadea(btn02);
-                    });
+                    aplicacion.reproducirAudio(audio[2], terminaAudio, 1000);
+                    animacionEntrada(info01, 'default', 1, 1);
+
+                    function terminaAudio() {
+
+                        parpadea(btnCerrar1);
+                        btnCerrar1.click(function () {
+                            if (btnCerrar1.css('cursor') == 'pointer') {
+                                TweenMax.killTweensOf(btnCerrar1);
+                                btnCerrar1.css({
+                                    'opacity': '1',
+                                    'cursor': 'default'
+                                });
+                            }
+                            animacionSalida(info01, 'default', .5, .5);
+                            animacionSalida(btnCerrar1, 'default', .5, .5);
+                            parpadea(btn02);
+                        });
+                    }
                 }
+                
             });
 
 
@@ -151,28 +166,28 @@
                         'opacity': '1',
                         'cursor': 'default'
                     });
-                }
-                aplicacion.reproducirAudio(audio[3], terminaAudio, 1000);
-                animacionEntrada(info02, 'default', 1, 1);
+                    aplicacion.reproducirAudio(audio[3], terminaAudio, 1000);
+                    animacionEntrada(info02, 'default', 1, 1);
 
-                function terminaAudio() {
-                    parpadea(btnCerrar);
-                    btnCerrar.click(function () {
-                        if (btnCerrar.css('cursor') == 'pointer') {
-                            TweenMax.killTweensOf(btnCerrar);
-                            btnCerrar.css({
-                                'opacity': '1',
-                                'cursor': 'default'
-                            });
-                        }
-                        animacionSalida(info02, 'desaparece', .5, .5);
-                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
-                        parpadea(btn03);
-                    });
+                    function terminaAudio() {
+                        parpadea(btnCerrar2);
+                        btnCerrar2.click(function () {
+                            if (btnCerrar2.css('cursor') == 'pointer') {
+                                TweenMax.killTweensOf(btnCerrar2);
+                                btnCerrar2.css({
+                                    'opacity': '1',
+                                    'cursor': 'default'
+                                });
+                            }
+                            animacionSalida(info02, 'default', .5, .5);
+                            animacionSalida(btnCerrar2, 'default', .5, .5);
+                            parpadea(btn03);
+                        });
+                    }
                 }
             });
 
-            //Funcionalidad btnRojo--------------------------------------------------------
+            //Funcionalidad btnLila--------------------------------------------------------
             btn03.click(function () {
                 if (btn03.css('cursor') == 'pointer') {
                     TweenMax.killTweensOf(btn03);
@@ -180,28 +195,28 @@
                         'opacity': '1',
                         'cursor': 'default'
                     });
-                }
-                aplicacion.reproducirAudio(audio[4], terminaAudio, 1000);
-                animacionEntrada(info03, 'default', 1, 1);
+                    aplicacion.reproducirAudio(audio[4], terminaAudio, 1000);
+                    animacionEntrada(info03, 'default', 1, 1);
 
-                function terminaAudio() {
-                    parpadea(btnCerrar);
-                    btnCerrar.click(function () {
-                        if (btnCerrar.css('cursor') == 'pointer') {
-                            TweenMax.killTweensOf(btnCerrar);
-                            btnCerrar.css({
-                                'opacity': '1',
-                                'cursor': 'default'
-                            });
-                        }
-                        animacionSalida(info03, 'desaparece', .5, .5);
-                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
-                        parpadea(btn04);
-                    });
+                    function terminaAudio() {
+                        parpadea(btnCerrar3);
+                        btnCerrar3.click(function () {
+                            if (btnCerrar3.css('cursor') == 'pointer') {
+                                TweenMax.killTweensOf(btnCerrar3);
+                                btnCerrar3.css({
+                                    'opacity': '1',
+                                    'cursor': 'default'
+                                });
+                            }
+                            animacionSalida(info03, 'default', .5, .5);
+                            animacionSalida(btnCerrar3, 'default', .5, .5);
+                            parpadea(btn04);
+                        });
+                    }
                 }
             });
 
-            //Funcionalidad btnMorado--------------------------------------------------------
+            //Funcionalidad btnRojo--------------------------------------------------------
             btn04.click(function () {
                 if (btn04.css('cursor') == 'pointer') {
                     TweenMax.killTweensOf(btn04);
@@ -209,24 +224,83 @@
                         'opacity': '1',
                         'cursor': 'default'
                     });
-                }
-                aplicacion.reproducirAudio(audio[5], terminaAudio, 1000);
-                animacionEntrada(info04, 'default', 1, 1);
+                    aplicacion.reproducirAudio(audio[5], terminaAudio, 1000);
+                    animacionEntrada(info04, 'default', 1, 1);
 
-                function terminaAudio() {
-                    parpadea(btnCerrar);
-                    btnCerrar.click(function () {
-                        if (btnCerrar.css('cursor') == 'pointer') {
-                            TweenMax.killTweensOf(btnCerrar);
-                            btnCerrar.css({
-                                'opacity': '1',
-                                'cursor': 'default'
-                            });
-                        }
-                        animacionSalida(info04, 'desaparece', .5, .5);
-                        animacionSalida(btnCerrar, 'desaparece', .5, .5);
-                        parpadea(btn05);
+                    function terminaAudio() {
+                        parpadea(btnCerrar4);
+                        btnCerrar4.click(function () {
+                            if (btnCerrar4.css('cursor') == 'pointer') {
+                                TweenMax.killTweensOf(btnCerrar4);
+                                btnCerrar4.css({
+                                    'opacity': '1',
+                                    'cursor': 'default'
+                                });
+                            }
+                            animacionSalida(info04, 'default', .5, .5);
+                            animacionSalida(btnCerrar4, 'default', .5, .5);
+                            parpadea(btn05);
+                        });
+                    }
+                }
+            });
+
+            //Funcionalidad btnMorado--------------------------------------------------------
+            btn05.click(function () {
+                if (btn05.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btn05);
+                    btn05.css({
+                        'opacity': '1',
+                        'cursor': 'default'
                     });
+                    aplicacion.reproducirAudio(audio[6], terminaAudio, 1000);
+                    animacionEntrada(info05, 'default', 1, 1);
+
+                    function terminaAudio() {
+                        parpadea(btnCerrar5);
+                        btnCerrar5.click(function () {
+                            if (btnCerrar5.css('cursor') == 'pointer') {
+                                TweenMax.killTweensOf(btnCerrar5);
+                                btnCerrar5.css({
+                                    'opacity': '1',
+                                    'cursor': 'default'
+                                });
+                            }
+                            animacionSalida(info05, 'default', .5, .5);
+                            animacionSalida(btnCerrar5, 'default', .5, .5);
+                            parpadea(btn06);
+                        });
+                    }
+                }
+            });
+
+            //Funcionalidad btnMoradoOscuro---------------------------------------------------
+            btn06.click(function () {
+                if (btn06.css('cursor') == 'pointer') {
+                    TweenMax.killTweensOf(btn06);
+                    btn06.css({
+                        'opacity': '1',
+                        'cursor': 'default'
+                    });
+
+                    aplicacion.reproducirAudio(audio[7], terminaAudio, 1000);
+                    animacionEntrada(info06, 'default', 1, 1);
+
+                    function terminaAudio() {
+                        parpadea(btnCerrar6);
+                        btnCerrar6.click(function () {
+                            if (btnCerrar6.css('cursor') == 'pointer') {
+                                TweenMax.killTweensOf(btnCerrar6);
+                                btnCerrar6.css({
+                                    'opacity': '1',
+                                    'cursor': 'default'
+                                });
+                            }
+                            animacionSalida(info06, 'default', .5, .5);
+                            animacionSalida(btnCerrar6, 'default', .5, .5);
+                            aplicacion.terminaPantalla();
+                        });
+                    }
                 }
             });
 

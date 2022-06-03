@@ -11,10 +11,15 @@ import {contendorPáginas,
         btnMenu,
         btnRecargar,
         btnAudio,
-        spinner} 
+        spinner,
+        temas,
+        menuLateral,
+        titulo,
+        cuadros, 
+        nombreTemas} 
 from './selectores.js';
 
-import {pBarraProgreso, paginas, pBotonMenu, pBotonRecargar, pBotonAudio, pBotonAtras, pBotonAdelante} from './configuracion.js';
+import {pBarraProgreso, paginas, pBotonMenu, pBotonRecargar, pBotonAudio, pBotonAtras, pBotonAdelante, pMenuLateral, pCuadros, pTitulos, pNombreTemas} from './configuracion.js';
 
 import { parpadea } from './animaciones.js';
 
@@ -49,7 +54,9 @@ export function cargarPagina(noPagina, paginasActivas){
             setTimeout(()=>{
                 posicionarElementos();
                 redimensionar();
-            }, 50);
+            }, 50)
+
+            
         });
     });
 }
@@ -66,12 +73,9 @@ export function actualizarPorcentaje(noPagina, totalPaginas){
     });
 }
 
-export function posicionarElementos(elementos){
+export function posicionarElementos(){
 
-    if(!elementos){
-        //Elementos
-        elementos = $('.elementos');
-    }
+    const elementos = $('.elementos');
 
     $.each(elementos, function(){
         const posicionX = $(this).data('posx');
@@ -90,12 +94,23 @@ export function posicionarElementos(elementos){
         btnAdelante.prop('disabled', false);
         btnAdelante.removeClass('btnNavDesactivado');
         btnAdelante.addClass('btnNavActivo');
+        setTimeout(()=>{
+            parpadea(btnAdelante);
+        }, 300);
     }
 
     export function desactivarBotonSiguiente(){
-        btnAdelante.prop('disabled', true);
-        btnAdelante.removeClass('btnNavActivo');
-        btnAdelante.addClass('btnNavDesactivado');
+        TweenMax.killTweensOf(btnAdelante);
+        
+        setTimeout(()=>{
+            btnAdelante.prop('disabled', true);
+            btnAdelante.removeClass('btnNavActivo');
+            btnAdelante.addClass('btnNavDesactivado');
+            btnAdelante.css({
+                'opacity': .6,
+                'cursor': 'default'
+            })
+        }, 300);
     }
 
     export function activarBotonAtras(){
@@ -226,12 +241,18 @@ export function redimensionar(){
         posicionBoton(pBotonAudio, btnAudio, escalaTemplate);
         posicionBoton(pBotonAtras, btnAtras, escalaTemplate);
         posicionBoton(pBotonAdelante, btnAdelante, escalaTemplate);
+        posicionarMenu(pMenuLateral, menuLateral, escalaTemplate);
+        posicionarTemas(pTitulos, titulo, escalaTemplate);
+        posicionarTemas(pCuadros, cuadros, escalaTemplate);
+        posicionarTemas(pNombreTemas, nombreTemas, escalaTemplate);
 
-        const elementos = $('.elementos');
+        setTimeout(()=>{
+            const elementos = $('.elementos');
 
-        if(elementos){
-            posicionarElemento(elementos, escalaTemplate);
-        }
+            if(elementos){
+                posicionarElemento(elementos, escalaTemplate);
+            }
+        }, 10);
     }, 10)
 }
 
@@ -287,6 +308,22 @@ function posicionarElemento(elementos, escala){
     });
 }
 
+function posicionarMenu(objeto, elemento, escala){
+    const nuevoWidth = objeto.width * escala;
+    const nuevoHeight = objeto.height * escala;
+
+    elemento.css({
+        'width': `${nuevoWidth}px`,
+        'heigth': `${nuevoHeight}px`
+    })
+}
+
+function posicionarTemas(objeto, elemento, escala){
+
+    const nuevoFontSize = objeto.fontSize * escala;
+    elemento.css('fontSize', `${nuevoFontSize}px`);
+}
+
 // Spinner----------------------------------------------------------------------
 export function cargando(funcion){
 
@@ -301,4 +338,26 @@ export function cargando(funcion){
         spinner.html();
         funcion();
     }, 1000)
+}
+
+//Actualizar temario-----------------------------------------------------------
+export function actualizarTemario(noPagina){
+    noPagina = noPagina + 1;
+    
+    $.each(temas, function(){
+        const pagina =parseInt($(this).data('pagina'));
+        
+        if(pagina<noPagina){
+            $(this).addClass('tema-activo');
+            $(this).find('i').removeClass('bx-square-rounded');
+            $(this).find('i').addClass('bx-check-square');
+            $(this).find('i').css('fontSize', '20px');
+
+            if($(this).hasClass('tema-activo')){
+                $(this).click(function(){
+                    aplicacion.irPagina(pagina);
+                });
+            }
+        }
+    });
 }
