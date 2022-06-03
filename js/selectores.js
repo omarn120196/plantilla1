@@ -28,7 +28,10 @@ export const porcentajeBarra = $('.porcentaje');
 //Menu lateral
 export const menuLateral = $('.menu-lateral');
 export const btnCerrar = $('.cerrar');
-export const tema = $('.tema');
+export const temas = $('.temas');
+export const titulo = $('.titulo h1');
+export const cuadros = $('.temas i');
+export const nombreTemas = $('.temas p');
 
 //Barra de porcentaje
 export const barraPorcentaje = $('.cont-progreso');

@@ -94,23 +94,21 @@ export function animacionSalida(elemento, direccion, tiempo, delay = 0){
                 ease: "back.in(1.7)"
             });
             break;
-        case 'desaparece':
-            gsap.to(elemento, {
-                opacity: 0,
-                duration: tiempo,
-                delay: delay,
-                display: "none",
-                ease: "back.in(1.7)"
-            });
-            break;
         default : 
             gsap.to(elemento, {
                 opacity: 0,
                 duration: tiempo,
-                delay: delay 
+                delay: delay,
+                ease: "back.in(1.7)" 
             });
             break;
     }
+
+    const retraso = (delay * 1000) + 1000;
+
+    setTimeout(()=>{
+        elemento.css('display', 'none');
+    }, retraso)
 }
 
 export function parpadea(elemento, tiempo=.8, delay=1){

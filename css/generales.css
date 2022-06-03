@@ -202,13 +202,14 @@ button img{
 
 .menu-lateral .titulo h1{
     color: white;
+    font-size: 32px;
 }
 
-.temas{
+.cont-temas{
     padding: 20px 10px;
 }
 
-.tema{
+.temas{
     display: flex;
     padding: 5px;
     justify-content: space-between;
@@ -217,12 +218,12 @@ button img{
     transition: all .3s ease;
 }
 
-.tema i{
+.temas i{
     color: var(--principal);
     font-size: 18px;
 }
 
-.tema p{
+.temas p{
     width: 90%;
     font-size: 14px;
 }
@@ -232,7 +233,7 @@ button img{
     background: var(--claro);
 }
 
-.contendeor-temas{
+.contenedor-temas{
     width: 100%;
     height: 100%;
     position: relative;
@@ -362,10 +363,10 @@ button img{
 /* ---------------------------Modo Desarrollador------------------- */
 .modoDesarrollador{
     position: fixed;
-    width: 300px;
+    width: 200px;
     height: 80px;
     top: 5%;
-    left: 0;
+    left: 45%;
     box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
 }
 
