@@ -55,6 +55,7 @@ html{
 
 .btnNavDesactivado{
     opacity: .6;
+    cursor: default;
 }
 
 .btnNavActivo{

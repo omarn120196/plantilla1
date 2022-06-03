@@ -111,24 +111,23 @@ export function animacionSalida(elemento, direccion, tiempo, delay = 0){
     }, retraso)
 }
 
-export function parpadea(elemento, tiempo=.8, delay=1){
-    const retraso = (delay * 1000) - .25;
+export function parpadea(elemento, tiempo=.8, delay=0){
+    
     
     // Hacer visible el elemento
-    setTimeout(()=>{
-        elemento.css({
-            'display': 'block',
-            'opacity': 1,
-            'cursor': 'pointer'
-        });
-    }, retraso);
+    elemento.css({
+        'display': 'block',
+        'opacity': .4,
+        'cursor': 'pointer'
+    });
 
     gsap.to(elemento, {
         duration: tiempo,
         delay: delay,
         repeat: -1,
         yoyo: true,
-        opacity: .5
+        opacity: 1,
+        ease: "sine.inOut"
     });
 
     

@@ -39,12 +39,16 @@ window.onunload = function(){
 }
 
 // Modo desarrollador-------------------------------------------------------------
-// modoDesarrollador();
+modoDesarrollador();
 
 //Redimensionar tamaño------------------------------------------------------------
 redimensionar();
+let intervalo; 
 $(window).resize(function(){
-    setTimeout(()=>{
-        aplicacion.recargarPag();
-    }, 100);
+    clearTimeout(intervalo);
+    intervalo = setTimeout(escalar, 100);
 });
+
+function escalar(){
+    aplicacion.recargarPag();
+}

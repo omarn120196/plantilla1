@@ -94,12 +94,23 @@ export function posicionarElementos(){
         btnAdelante.prop('disabled', false);
         btnAdelante.removeClass('btnNavDesactivado');
         btnAdelante.addClass('btnNavActivo');
+        setTimeout(()=>{
+            parpadea(btnAdelante);
+        }, 300);
     }
 
     export function desactivarBotonSiguiente(){
-        btnAdelante.prop('disabled', true);
-        btnAdelante.removeClass('btnNavActivo');
-        btnAdelante.addClass('btnNavDesactivado');
+        TweenMax.killTweensOf(btnAdelante);
+        
+        setTimeout(()=>{
+            btnAdelante.prop('disabled', true);
+            btnAdelante.removeClass('btnNavActivo');
+            btnAdelante.addClass('btnNavDesactivado');
+            btnAdelante.css({
+                'opacity': .6,
+                'cursor': 'default'
+            })
+        }, 300);
     }
 
     export function activarBotonAtras(){
@@ -241,7 +252,7 @@ export function redimensionar(){
             if(elementos){
                 posicionarElemento(elementos, escalaTemplate);
             }
-        }, 100);
+        }, 10);
     }, 10)
 }
 

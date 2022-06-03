@@ -6,7 +6,8 @@ import {cargarPagina,
         desactivarBotonSiguiente, 
         activarBotonAtras,
         activarBotonSiguiente,
-        actualizarTemario} 
+        actualizarTemario,
+        redimensionar} 
 from '../funciones.js';
 
 import {menuLateral} from '../selectores.js';
