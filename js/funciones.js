@@ -50,15 +50,27 @@ export function cargarPagina(noPagina, paginasActivas){
         $.get(url, {}, function(data){
             contendorPáginas.html(data);
 
-            //Posicionar los elementos
-            setTimeout(()=>{
-                posicionarElementos();
-                redimensionar();
-            }, 50)
-
-            
+            ajustarElementos(); 
         });
     });
+}
+
+function posicionamiento(){
+    return new Promise(resolve=>{
+        resolve(posicionarElementos());  
+    })
+}
+
+async function ajustarElementos(){
+    try {
+        await posicionamiento();
+        setTimeout(()=>{
+            console.log('redimensionando');
+            redimensionar();
+        }, 1500);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export function actualizarPorcentaje(noPagina, totalPaginas){
@@ -327,17 +339,23 @@ function posicionarTemas(objeto, elemento, escala){
 // Spinner----------------------------------------------------------------------
 export function cargando(funcion){
 
-    spinner.css('opacity', '1');
+    spinner.css({
+        'display': 'flex',
+        'opacity': '1'
+    });
 
     spinner.html(`
         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     `);
 
     setTimeout(()=>{
-        spinner.css('opacity', '0');
+        spinner.css({
+            'display': 'none',
+            'opacity': '0'
+        });
         spinner.html();
         funcion();
-    }, 1000)
+    }, 1500)
 }
 
 //Actualizar temario-----------------------------------------------------------

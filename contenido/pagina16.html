@@ -33,13 +33,13 @@
 
             function iniciarPagina(){
 
-                aplicacion.reproducirAudio(audio[0], terminaPagina, 1000);
+                aplicacion.reproducirAudio(audio[0], terminaCurso, 1000);
                 animacionEntrada(pleca, 'izquierda-derecha', 1, 1);
                 animacionEntrada(fondo, 'derecha-izquierda', 1, 1);
             }            
 
-            function terminaPagina(){
-                aplicacion.terminaPantalla()
+            function terminaCurso(){
+                console.log('Fin');
             }
         });
     </script>

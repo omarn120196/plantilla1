@@ -107,7 +107,10 @@
             // Cargar Audios------------------------------------------------------
             const audio = [
                 new Audio('./audios/s_bien.mp3'),
-                new Audio('./audios/s_mal.mp3')
+                new Audio('./audios/s_mal.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_15_01.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_15_02.mp3'),
+                new Audio('./audios/Sanofi_Reforzamiento_15_03.mp3'),
             ]
 
             //Crear Variables-----------------------------------------------------
@@ -810,9 +813,10 @@
                     'left': '688px'
                 });
 
+                aplicacion.reproducirAudio(audio[2], aplicacion.terminaPantalla);
                 animacionEntrada(retro, 'izquierda-derecha', 1);
                 animacionEntrada(p, 'default', 1, 1);
-                aplicacion.terminaPantalla();
+                
             }
 
             function retroNegativa(calificacion){
@@ -826,17 +830,20 @@
                     'left': '680px'
                 });
 
+                aplicacion.reproducirAudio(audio[3], reintentantar);
                 animacionEntrada(retro, 'izquierda-derecha', 1);
                 animacionEntrada(p, 'default', 1, 1);
                 animacionEntrada(btnReintentar, 'default', .5, 1);
 
-                setTimeout(()=>{
-                    parpadea(btnReintentar);
-                    btnReintentar.click(function(){
-                        TweenMax.killTweensOf(btnReintentar);
-                        aplicacion.recargarPag();
-                    });
-                }, 2000)
+                function reintentantar(){
+                    setTimeout(()=>{
+                        parpadea(btnReintentar);
+                        btnReintentar.click(function(){
+                            TweenMax.killTweensOf(btnReintentar);
+                            aplicacion.recargarPag();
+                        });
+                    }, 2000)
+                }
             }
 
             function retroFinal(calificacion){
@@ -849,8 +856,13 @@
                     'left': '680px'
                 });
 
+                aplicacion.reproducirAudio(audio[3], noAprobo);
                 animacionEntrada(retro, 'izquierda-derecha', 1);
                 animacionEntrada(p, 'default', 1, 1);
+
+                function noAprobo(){
+                    console.log('Ver curso');
+                }
             }
 
         });
